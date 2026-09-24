@@ -1,0 +1,26 @@
+  # Cargo build output
+  /target/
+
+  # rustfmt backups
+  **/*.rs.bk
+
+  # MSVC debug symbols
+  *.pdb
+
+  # cargo-mutants
+  **/mutants.out*/
+
+  # Local tooling and editor files
+  /.agents/
+  /.codex/
+  /.idea/
+
+  # Documentation temporarily excluded
+  /docs/
+
+  # Generated cryptographic artifacts
+  *.vk
+  *.pk
+  *.params
+  *.proof
+  *.witness
