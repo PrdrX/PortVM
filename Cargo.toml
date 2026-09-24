@@ -1,0 +1,39 @@
+[package]
+name = "portvm"
+version = "0.1.0"
+edition = "2021"
+autobins = false
+
+[dependencies]
+ff = "0.13"
+rand = "0.8"
+rand_chacha = "0.3.1"
+halo2_proofs = { git = "https://github.com/privacy-scaling-explorations/halo2", tag = "v0.3.0" }
+
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "vk_harness"
+path = "src/vk_harness.rs"
+
+[[bin]]
+name = "pk_harness"
+path = "src/pk_harness.rs"
+
+[[bin]]
+name = "witness_gen"
+path = "src/witness_gen.rs"
+
+[[bin]]
+name = "mockprover"
+path = "src/mockprover.rs"
+
+[[bin]]
+name = "prove"
+path = "src/prove.rs"
+
+[[bin]]
+name = "verify"
+path = "src/verify.rs"
