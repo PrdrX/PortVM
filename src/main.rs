@@ -567,6 +567,8 @@ impl<F: PrimeField> CPUTrace_Chip<F> {
                 // halt managment
                 q.clone() * isendtx.clone() * (one.clone() - ishalt_next.clone()),
                 q.clone() * ishalt_cur.clone() * (one.clone() - ishalt_next.clone()),
+                
+                q.clone() * isreturn.clone() * rlc_j.clone() * (one.clone() - rlc_j.clone()),
                 q.clone()
                     * isreturn.clone()
                     * ((rlc_j.clone() * (rlc_i.clone() - rlc_g.clone())
@@ -1728,7 +1730,7 @@ impl<F: PrimeField> ALUTrace_Chip<F> {
                             * two_pow_64.clone())),
                 (q.clone() * byte32_cur.clone() * limb4.clone()),
                 (gatemem.clone()
-                    * (one.clone() - byte32_next.clone() + byte32_cur.clone())
+                    * (one.clone() - byte32_next.clone() + byte32_cur.clone()) // ?
                     * (byte32_next.clone() - byte32_cur.clone())),
                 // pac_carry_0 = ismstore8
                 (gatemem.clone() * pac_carry_0.clone() * (one.clone() - pac_carry_0.clone())),
@@ -5883,7 +5885,7 @@ impl<F: PrimeField> Circuit<F> for EVM_Circuit<F> {
             });
         }
 
-        meta.lookup("return inverse range", |meta| {
+        meta.lookup("return inv range", |meta| {
             let q = meta.query_selector(q_cpu);
             let isreturn = meta.query_advice(isreturn_cpu, Rotation::cur());
             let inv = meta.query_advice(inv_cpu, Rotation::cur());
@@ -5892,12 +5894,12 @@ impl<F: PrimeField> Circuit<F> for EVM_Circuit<F> {
         });
 
         meta.lookup("(ismul_alu + isdiv_alu) * noname_alu range", |meta| {
-            let _q = meta.query_selector(q_alu);
+            let q = meta.query_selector(q_alu);
             let ismul_alu = meta.query_advice(ismul_alu, Rotation::cur());
             let isdiv_alu = meta.query_advice(isdiv_alu, Rotation::cur());
             let noname_alu = meta.query_advice(noname_alu, Rotation::cur());
 
-            vec![((ismul_alu + isdiv_alu) * noname_alu, range0)]
+            vec![(q * (ismul_alu + isdiv_alu) * noname_alu, range0)]
         });
 
         meta.lookup_any("copy circuit to rt, ismem", |cells| {
@@ -6830,6 +6832,63 @@ impl<F: PrimeField> Circuit<F> for EVM_Circuit<F> {
                     byte_active.clone() * call_id_byte,
                 ),
                 (gate.clone() * pc_cpu, byte_active * (pc_byte - one)),
+            ]
+        });
+
+        meta.lookup_any("byte limb1 to alu", |cells| {
+            let one = Expression::Constant(F::ONE);
+            let byte_active = cells.query_instance(byte_active, Rotation::cur());
+            let gate_alu = cells.query_selector(q_alu) * (one.clone() - cells.query_advice(byte32_alu, Rotation::cur()));
+            
+            let limb_a_alu = cells.query_advice(limb_a_alu, Rotation::cur());
+
+            let limb1_byte = cells.query_instance(limb1_bytetable, Rotation::cur());
+
+            vec![
+                (byte_active.clone(), gate_alu.clone()),
+                (byte_active.clone() * limb1_byte.clone(), gate_alu.clone() * limb_a_alu.clone()),
+            ]
+        });
+        meta.lookup_any("byte limb2 to alu", |cells| {
+            let one = Expression::Constant(F::ONE);
+            let byte_active = cells.query_instance(byte_active, Rotation::cur());
+            let gate_alu = cells.query_selector(q_alu) * (one.clone() - cells.query_advice(byte32_alu, Rotation::cur()));
+            
+            let limb_a_alu = cells.query_advice(limb_a_alu, Rotation::cur());
+
+            let limb2_byte = cells.query_instance(limb2_bytetable, Rotation::cur());
+
+            vec![
+                (byte_active.clone(), gate_alu.clone()),
+                (byte_active.clone() * limb2_byte.clone(), gate_alu.clone() * limb_a_alu.clone()),
+            ]
+        });
+        meta.lookup_any("byte limb3 to alu", |cells| {
+            let one = Expression::Constant(F::ONE);
+            let byte_active = cells.query_instance(byte_active, Rotation::cur());
+            let gate_alu = cells.query_selector(q_alu) * (one.clone() - cells.query_advice(byte32_alu, Rotation::cur()));
+            
+            let limb_a_alu = cells.query_advice(limb_a_alu, Rotation::cur());
+
+            let limb3_byte = cells.query_instance(limb3_bytetable, Rotation::cur());
+
+            vec![
+                (byte_active.clone(), gate_alu.clone()),
+                (byte_active.clone() * limb3_byte.clone(), gate_alu.clone() * limb_a_alu.clone()),
+            ]
+        });
+        meta.lookup_any("byte limb4 to alu", |cells| {
+            let one = Expression::Constant(F::ONE);
+            let byte_active = cells.query_instance(byte_active, Rotation::cur());
+            let gate_alu = cells.query_selector(q_alu) * (one.clone() - cells.query_advice(byte32_alu, Rotation::cur()));
+            
+            let limb_a_alu = cells.query_advice(limb_a_alu, Rotation::cur());
+
+            let limb4_byte = cells.query_instance(limb4_bytetable, Rotation::cur());
+
+            vec![
+                (byte_active.clone(), gate_alu.clone()),
+                (byte_active.clone() * limb4_byte.clone(), gate_alu.clone() * limb_a_alu.clone()),
             ]
         });
 
@@ -9472,7 +9531,7 @@ impl<F: PrimeField> Circuit<F> for EVM_Circuit<F> {
             },
         );
 
-        meta.lookup_any("cpu to stack, w, issucess, isreturn", |cells| {
+        meta.lookup_any("cpu to stack, w, issuccess, isreturn", |cells| {
             let gate =
                 cells.query_advice(isreturn_cpu, Rotation::cur()) * cells.query_selector(q_cpu);
             let q_rt = cells.query_selector(q_rt);

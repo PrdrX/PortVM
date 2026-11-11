@@ -1416,7 +1416,7 @@ pub fn generate_witness(
     let mut bytetable = build_bytetable_rows(&input.bytecode_rows, &call_id_lookup)?;
     append_halt_padding_byte_rows(&mut bytetable, &cpu_rows)?;
     let txtrace = build_tx_rows(&input.tx_rows)?;
-    let alu = build_alu_rows(&input, &cpu_rows, &call_id_lookup)?;
+    let alu = build_alu_rows(&input, &bytetable, &cpu_rows, &call_id_lookup)?;
     let copytool = build_copy_rows(&input.copy_rows, &call_id_lookup)?;
     let mut rwtrace = build_rw_rows(
         &input.rw_rows,
@@ -1464,7 +1464,7 @@ pub fn generate_witness(
         public_inputs,
         call_id_map,
         logical_cpu_rows: input.cpu_steps.len(),
-        logical_alu_rows: logical_alu_len(&input),
+        logical_alu_rows: logical_alu_len(&input, bytetable.len()),
         logical_copy_rows: input.copy_rows.len(),
         logical_rw_rows: rwtrace.len(),
     })
@@ -1669,6 +1669,7 @@ fn append_halt_padding_byte_rows(
 
 fn build_alu_rows(
     input: &LogicalWitnessInput,
+    bytetable: &[Byte_table_values<Fp>],
     cpu_rows: &[CPU_values<Fp>],
     _call_id_lookup: &BTreeMap<u64, u64>,
 ) -> Result<Vec<ALU_values<Fp>>, WitnessGenerationError> {
@@ -1689,6 +1690,16 @@ fn build_alu_rows(
     }
 
     let mut rows = Vec::new();
+
+    // Each active public ByteTable row gets one arithmetic chunk proving that
+    // all four of its limbs fit in 64 bits.  The circuit-side lookup only needs
+    // each limb to occur in an arithmetic `limb_a` cell, but using an explicit
+    // `limb + 0 = limb` ADD chunk keeps the generated witness deterministic and
+    // makes the range-check purpose of these rows unambiguous.
+    for byte_row in bytetable {
+        rows.extend(byte_range_add_chunk(byte_row));
+    }
+
     for chunk in &input.arithmetic_chunks {
         for (local_row, row) in chunk.rows.iter().enumerate() {
             rows.push(ALU_values {
@@ -2296,8 +2307,8 @@ fn build_public_inputs(
     ]
 }
 
-fn logical_alu_len(input: &LogicalWitnessInput) -> usize {
-    input.arithmetic_chunks.len() * 4 + input.memory_events.len() * 32
+fn logical_alu_len(input: &LogicalWitnessInput, bytetable_rows: usize) -> usize {
+    bytetable_rows * 4 + input.arithmetic_chunks.len() * 4 + input.memory_events.len() * 32
 }
 
 fn resolve_call_id(
@@ -2408,6 +2419,70 @@ fn zero_add_chunk() -> [ALU_values<Fp>; 4] {
         rlc_c: [0u64; 4],
         noname: Fp::ZERO,
     })
+}
+
+fn byte_range_add_chunk(byte_row: &Byte_table_values<Fp>) -> [ALU_values<Fp>; 4] {
+    let limbs = [
+        field_to_u64(byte_row.limb1),
+        field_to_u64(byte_row.limb2),
+        field_to_u64(byte_row.limb3),
+        field_to_u64(byte_row.limb4),
+    ];
+
+    core::array::from_fn(|idx| {
+        let limb = limbs[idx];
+        let suffix = suffix_u64_word(limbs, idx);
+        let pac_limb = u64_to_u16_quads(limb).map(fp);
+
+        ALU_values {
+            isfirst: fp_bool(idx == 0),
+            islast: fp_bool(idx == 3),
+            byte32: Fp::ZERO,
+            isfirst32: Fp::ZERO,
+            islast32: Fp::ZERO,
+            limbnumber: fp(idx as u64),
+            isadd: Fp::ONE,
+            ismul: Fp::ZERO,
+            isdiv: Fp::ZERO,
+            islt: Fp::ZERO,
+            iseq: Fp::ZERO,
+            isand: Fp::ZERO,
+            isor: Fp::ZERO,
+            isxor: Fp::ZERO,
+            isnot: Fp::ZERO,
+            barlt: Fp::ZERO,
+            carry: Fp::ZERO,
+            rem: Fp::ZERO,
+            limb_a: fp(limb),
+            limb_b: Fp::ZERO,
+            limb_c: fp(limb),
+            pac_a: pac_limb,
+            pac_b: [Fp::ZERO; 4],
+            pac_c: pac_limb,
+            pac_carry: [Fp::ZERO; 4],
+            pac_rem: [Fp::ZERO; 4],
+            pac_diff: [Fp::ZERO; 4],
+            rlc_a: suffix,
+            rlc_b: [0u64; 4],
+            rlc_c: suffix,
+            noname: Fp::ZERO,
+        }
+    })
+}
+
+fn suffix_u64_word(word: [u64; 4], start: usize) -> [u64; 4] {
+    let mut suffix = [0u64; 4];
+    suffix[..4 - start].copy_from_slice(&word[start..]);
+    suffix
+}
+
+fn u64_to_u16_quads(value: u64) -> [u64; 4] {
+    [
+        value & 0xffff,
+        (value >> 16) & 0xffff,
+        (value >> 32) & 0xffff,
+        (value >> 48) & 0xffff,
+    ]
 }
 
 fn dummy_mstore8_memory_chunk() -> [ALU_values<Fp>; 32] {

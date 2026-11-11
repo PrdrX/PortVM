@@ -3058,14 +3058,9 @@ fn lower_mul_chunk(op: &ExecutionArithmeticOp) -> Result<LogicalArithmeticChunk,
         rows[limb_idx].pac_carry = u64_to_u16_quads(carry_out);
     }
 
-    let mut high_tail = Acc192::default();
-    high_tail.add_u64(carry_in)?;
-    for (ai, bi) in [(3usize, 1usize), (1, 3), (3, 2), (2, 3), (3, 3), (2, 2)] {
-        high_tail.add_u128((alu_a[ai] as u128) * (alu_b[bi] as u128))?;
-    }
-    if !high_tail.is_zero() {
-        return Err(ExecutionError::ArithmeticOverflow("mul high half"));
-    }
+    // EVM multiplication is modulo 2^256.  The four rows above constrain the
+    // low four limbs and their carries; any remaining high half is deliberately
+    // discarded rather than treated as a witness-generation error.
 
     Ok(LogicalArithmeticChunk {
         op: ArithmeticOpKind::Mul,
@@ -4330,6 +4325,24 @@ mod tests {
                 0x0123_4567_89ab_cdef
             )
         );
+    }
+
+    #[test]
+    fn overflowing_mul_lowers_modulo_2_256() {
+        let operation = ExecutionArithmeticOp {
+            source_step: 0,
+            op: ArithmeticOpKind::Mul,
+            lhs: [0, 0, 0, 1u64 << 63],
+            rhs: [2, 0, 0, 0],
+            result: [0; 4],
+        };
+
+        let chunk = lower_mul_chunk(&operation)
+            .expect("the high half of an EVM multiplication must be discarded");
+
+        assert_eq!(chunk.op, ArithmeticOpKind::Mul);
+        assert!(chunk.rows.iter().all(|row| row.limb_c == 0));
+        assert_eq!(chunk.rows[3].carry, Fp::ONE);
     }
 
     #[test]
