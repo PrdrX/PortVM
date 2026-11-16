@@ -189,22 +189,22 @@ pub enum WitnessFileError {
 impl std::fmt::Display for WitnessFileError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::Io(err) => write!(f, "witness file I/O failed: {err}"),
-            Self::InvalidMagic => f.write_str("invalid witness file magic"),
+            Self::Io(err) => write!(f, "PortVM artifact I/O failed: {err}"),
+            Self::InvalidMagic => f.write_str("invalid PortVM artifact magic"),
             Self::UnsupportedVersion(version) => {
-                write!(f, "unsupported witness file version: {version}")
+                write!(f, "unsupported PortVM artifact version: {version}")
             }
-            Self::InvalidField => f.write_str("witness file contains an invalid field element"),
+            Self::InvalidField => f.write_str("PortVM artifact contains an invalid field element"),
             Self::InvalidLength {
                 section,
                 length,
                 maximum,
             } => write!(
                 f,
-                "witness file section {section} is too long: {length} rows, maximum {maximum}"
+                "PortVM artifact section {section} is too long: {length} rows, maximum {maximum}"
             ),
             Self::InvalidStructure(message) => {
-                write!(f, "invalid witness file structure: {message}")
+                write!(f, "invalid PortVM artifact structure: {message}")
             }
         }
     }

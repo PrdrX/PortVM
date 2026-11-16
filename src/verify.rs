@@ -1,4 +1,5 @@
 use portvm::main::verify_proof_from_files;
+use portvm::validate_circuit_k;
 use std::env;
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -89,11 +90,12 @@ fn run() -> Result<(), RunError> {
     }
 
     let program = env::args().next().unwrap_or_else(|| "verify".to_string());
-    let k = k.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let params_path = params_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let vk_path = vk_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let proof_path = proof_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let instances_path = instances_path.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let k = k.ok_or_else(|| RunError::Message(usage(&program)))?;
+    validate_circuit_k(k).map_err(RunError::Message)?;
+    let params_path = params_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let vk_path = vk_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let proof_path = proof_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let instances_path = instances_path.ok_or_else(|| RunError::Message(usage(&program)))?;
 
     let summary = verify_proof_from_files(k, &params_path, &vk_path, &proof_path, &instances_path)
         .map_err(|err| RunError::Message(format!("proof verification failed: {err}")))?;

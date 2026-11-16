@@ -1,5 +1,6 @@
 use portvm::input::parse_public_tables_file;
 use portvm::main::{generate_witness_from_tables, GeneratedWitness, ProofGenerationSummary};
+use portvm::validate_circuit_k;
 use std::env;
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -68,15 +69,16 @@ enum KeyMode {
 fn run() -> Result<(), RunError> {
     let args = parse_args()?;
     let program = env::args().next().unwrap_or_else(|| "prove".to_string());
-    let k = args.k.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let k = args.k.ok_or_else(|| RunError::Message(usage(&program)))?;
+    validate_circuit_k(k).map_err(RunError::Message)?;
     let proof_out_path = args
         .proof_out_path
         .clone()
-        .ok_or_else(|| RunError::Help(usage(&program)))?;
+        .ok_or_else(|| RunError::Message(usage(&program)))?;
     let instances_out_path = args
         .instances_out_path
         .clone()
-        .ok_or_else(|| RunError::Help(usage(&program)))?;
+        .ok_or_else(|| RunError::Message(usage(&program)))?;
 
     let key_mode = resolve_key_mode(&args, &program)?;
     let witness = load_or_generate_witness(&args)?;
@@ -193,15 +195,15 @@ fn resolve_key_mode(args: &Args, program: &str) -> Result<KeyMode, RunError> {
             let params_out_path = args
                 .params_out_path
                 .clone()
-                .ok_or_else(|| RunError::Help(usage(program)))?;
+                .ok_or_else(|| RunError::Message(usage(program)))?;
             let vk_out_path = args
                 .vk_out_path
                 .clone()
-                .ok_or_else(|| RunError::Help(usage(program)))?;
+                .ok_or_else(|| RunError::Message(usage(program)))?;
             let pk_out_path = args
                 .pk_out_path
                 .clone()
-                .ok_or_else(|| RunError::Help(usage(program)))?;
+                .ok_or_else(|| RunError::Message(usage(program)))?;
             Ok(KeyMode::LocalSetup {
                 params_out_path,
                 vk_out_path,

@@ -2759,15 +2759,16 @@ impl TxPublicData {
         let value = value.ok_or(ExecutionError::TxMetadataMissing("value"))?;
         let declared =
             declared_calldata_len.ok_or(ExecutionError::TxMetadataMissing("calldata length"))?;
-        let calldata_vec = (0..declared)
-            .map(|idx| calldata.get(&idx).copied().unwrap_or(0))
-            .collect::<Vec<_>>();
-        if declared as usize != calldata_vec.len() {
-            return Err(ExecutionError::TxCalldataLengthMismatch {
-                declared,
-                actual: calldata_vec.len(),
-            });
+        let actual = calldata
+            .keys()
+            .filter(|&&index| index < declared)
+            .count();
+        if u64::try_from(actual).unwrap_or(u64::MAX) != declared {
+            return Err(ExecutionError::TxCalldataLengthMismatch { declared, actual });
         }
+        let calldata_vec = (0..declared)
+            .map(|idx| calldata[&idx])
+            .collect::<Vec<_>>();
 
         Ok(Self {
             txid,
@@ -4378,6 +4379,49 @@ mod tests {
     }
 
     #[test]
+    fn tx_public_data_rejects_fewer_calldata_rows_than_declared() {
+        let rows = expand_compact_tx_rows(vec![
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLDATA_BYTE,
+                value: "10".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLDATA_BYTE,
+                value: "20".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLDATA_BYTE,
+                value: "30".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLER_ADDRESS,
+                value: "1".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLEE_ADDRESS,
+                value: "2".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_VALUE,
+                value: "0".to_string(),
+            },
+            CompactLogicalTxRow {
+                tag: TX_TAG_CALLDATA_LENGTH,
+                value: "5".to_string(),
+            },
+        ])
+        .expect("compact TX values should parse");
+
+        assert!(matches!(
+            TxPublicData::from_rows(&rows),
+            Err(ExecutionError::TxCalldataLengthMismatch {
+                declared: 5,
+                actual: 3
+            })
+        ));
+    }
+
+    #[test]
     fn concrete_public_tables_call_return_roundtrip_lowers_witness() {
         let tables = concrete_scenario_tables();
 
@@ -4541,27 +4585,13 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "Known live circuit issues in region padding/ROM assignment/call RW lookups still block MockProver"]
-    fn concrete_public_tables_call_return_roundtrip_reproduces_mock_prover_failure() {
-        let err = mock_prove_from_tables(17, concrete_scenario_tables())
-            .expect_err("scenario currently should fail inside MockProver");
-        match err {
-            ExecutionPipelineError::WitnessGeneration(
-                WitnessGenerationError::ConstraintViolation(message),
-            ) => {
-                assert!(!message.is_empty());
-            }
-            other => panic!("unexpected pipeline error: {other}"),
-        }
-    }
+    #[ignore = "full k=17 MockProver integration test; run explicitly because it is resource-intensive"]
+    fn concrete_public_tables_call_return_roundtrip_passes_mock_prover() {
+        let bundle = mock_prove_from_tables(17, concrete_scenario_tables())
+            .expect("concrete CALL/RETURN scenario should pass MockProver");
 
-    #[test]
-    #[ignore = "debug helper for inspecting live MockProver failures"]
-    fn debug_print_concrete_mock_prover_failure() {
-        let err = mock_prove_from_tables(17, concrete_scenario_tables())
-            .expect_err("scenario currently should fail inside MockProver");
-        eprintln!("{err}");
-        panic!("debug printed concrete MockProver failure");
+        assert_eq!(bundle.execution_trace.cpu_steps.len(), 16);
+        assert_eq!(bundle.generated_witness.call_id_map(), &[(0, 1), (1, 18)]);
     }
 
     #[test]

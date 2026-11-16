@@ -10669,7 +10669,7 @@ impl<F: PrimeField> Circuit<F> for EVM_Circuit<F> {
             let tag_tx = cells.query_instance(tag_tx, Rotation::cur());
             let index_tx = cells.query_instance(index_tx, Rotation::cur());
             let zero = Expression::Constant(F::ZERO);
-            let tag_cpu = Expression::Constant(F::from(10u64));
+            let tag_cpu = Expression::Constant(F::from(8u64));
             let two_pow_128 = Expression::Constant(F::from(2u64).pow_vartime([128]));
             vec![
                 (

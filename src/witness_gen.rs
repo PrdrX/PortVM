@@ -69,8 +69,8 @@ fn run() -> Result<(), RunError> {
     let program = env::args()
         .next()
         .unwrap_or_else(|| "witness_gen".to_string());
-    let input_path = input_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let out_path = out_path.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let input_path = input_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let out_path = out_path.ok_or_else(|| RunError::Message(usage(&program)))?;
 
     let tables = parse_public_tables_file(&input_path)
         .map_err(|err| RunError::Message(format!("input parsing failed: {err}")))?;

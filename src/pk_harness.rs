@@ -1,4 +1,5 @@
 use portvm::main::generate_pk_from_files;
+use portvm::validate_circuit_k;
 use std::env;
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -86,10 +87,11 @@ fn run() -> Result<(), RunError> {
     let program = env::args()
         .next()
         .unwrap_or_else(|| "pk_harness".to_string());
-    let k = k.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let params_path = params_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let vk_path = vk_path.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let out_path = out_path.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let k = k.ok_or_else(|| RunError::Message(usage(&program)))?;
+    validate_circuit_k(k).map_err(RunError::Message)?;
+    let params_path = params_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let vk_path = vk_path.ok_or_else(|| RunError::Message(usage(&program)))?;
+    let out_path = out_path.ok_or_else(|| RunError::Message(usage(&program)))?;
 
     let summary = generate_pk_from_files(k, &params_path, &vk_path, &out_path)
         .map_err(|err| RunError::Message(format!("pk generation failed: {err}")))?;

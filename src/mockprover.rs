@@ -1,5 +1,6 @@
 use portvm::input::parse_public_tables_file;
 use portvm::main::{generate_witness_from_tables, GeneratedWitness};
+use portvm::validate_circuit_k;
 use std::env;
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -82,7 +83,8 @@ fn run() -> Result<(), RunError> {
     let program = env::args()
         .next()
         .unwrap_or_else(|| "mockprover".to_string());
-    let k = k.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let k = k.ok_or_else(|| RunError::Message(usage(&program)))?;
+    validate_circuit_k(k).map_err(RunError::Message)?;
 
     let generated_witness = match (input_path, witness_path) {
         (Some(_), Some(_)) => {
@@ -90,7 +92,7 @@ fn run() -> Result<(), RunError> {
                 "choose exactly one of --input or --witness".to_string(),
             ))
         }
-        (None, None) => return Err(RunError::Help(usage(&program))),
+        (None, None) => return Err(RunError::Message(usage(&program))),
         (Some(input_path), None) => {
             let tables = parse_public_tables_file(&input_path)
                 .map_err(|err| RunError::Message(format!("input parsing failed: {err}")))?;

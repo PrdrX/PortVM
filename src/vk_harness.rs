@@ -1,4 +1,5 @@
 use portvm::main::{generate_vk_from_params_file, generate_vk_with_local_setup};
+use portvm::validate_circuit_k;
 use std::env;
 use std::path::PathBuf;
 use std::process::ExitCode;
@@ -93,8 +94,9 @@ fn run() -> Result<(), RunError> {
     let program = env::args()
         .next()
         .unwrap_or_else(|| "vk_harness".to_string());
-    let k = k.ok_or_else(|| RunError::Help(usage(&program)))?;
-    let out_path = out_path.ok_or_else(|| RunError::Help(usage(&program)))?;
+    let k = k.ok_or_else(|| RunError::Message(usage(&program)))?;
+    validate_circuit_k(k).map_err(RunError::Message)?;
+    let out_path = out_path.ok_or_else(|| RunError::Message(usage(&program)))?;
 
     if unsafe_local_setup == params_path.is_some() {
         return Err(RunError::Message(
@@ -115,7 +117,7 @@ fn run() -> Result<(), RunError> {
         generate_vk_with_local_setup(k, &out_path, &params_out_path)
             .map_err(|err| RunError::Message(format!("vk generation failed: {err}")))?
     } else {
-        let params_path = params_path.ok_or_else(|| RunError::Help(usage(&program)))?;
+        let params_path = params_path.ok_or_else(|| RunError::Message(usage(&program)))?;
         generate_vk_from_params_file(k, &params_path, &out_path)
             .map_err(|err| RunError::Message(format!("vk generation failed: {err}")))?
     };
