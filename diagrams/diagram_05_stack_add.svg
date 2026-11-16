@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="406" viewBox="0 0 1280 406" role="img" aria-labelledby="title description">
+  <title id="title">Stack before and after ADD</title>
+  <desc id="description">The two top stack values, nine and four, are replaced by their sum thirteen while lower stack values remain unchanged.</desc>
+
+  <defs>
+    <filter id="table-shadow" x="-5%" y="-10%" width="110%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f1f3f5; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #e6e9ed; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="406" fill="#101116"/>
+
+  <!-- Stack before ADD -->
+  <text x="130" y="52" class="title">Stack before ADD</text>
+  <g filter="url(#table-shadow)">
+    <rect x="130" y="72" width="480" height="294" rx="8" class="body"/>
+  </g>
+  <path d="M138 72 H602 Q610 72 610 80 V126 H130 V80 Q130 72 138 72 Z" class="head"/>
+  <g class="grid">
+    <line x1="130" y1="126" x2="610" y2="126"/>
+    <line x1="130" y1="186" x2="610" y2="186"/>
+    <line x1="130" y1="246" x2="610" y2="246"/>
+    <line x1="130" y1="306" x2="610" y2="306"/>
+    <line x1="290" y1="72" x2="290" y2="366"/>
+    <line x1="450" y1="72" x2="450" y2="366"/>
+  </g>
+  <text x="210" y="106" class="header" text-anchor="middle">SP</text>
+  <text x="370" y="106" class="header" text-anchor="middle">Address</text>
+  <text x="530" y="106" class="header" text-anchor="middle">Value</text>
+  <text x="210" y="162" class="cell" text-anchor="middle">4</text>
+  <text x="370" y="162" class="cell" text-anchor="middle">3</text>
+  <text x="530" y="162" class="mono" text-anchor="middle">9</text>
+  <text x="210" y="222" class="cell" text-anchor="middle">3</text>
+  <text x="370" y="222" class="cell" text-anchor="middle">2</text>
+  <text x="530" y="222" class="mono" text-anchor="middle">4</text>
+  <text x="210" y="282" class="cell" text-anchor="middle">2</text>
+  <text x="370" y="282" class="cell" text-anchor="middle">1</text>
+  <text x="530" y="282" class="mono" text-anchor="middle">7</text>
+  <text x="210" y="342" class="cell" text-anchor="middle">1</text>
+  <text x="370" y="342" class="cell" text-anchor="middle">0</text>
+  <text x="530" y="342" class="mono" text-anchor="middle">2</text>
+
+  <!-- Stack after ADD -->
+  <text x="670" y="52" class="title">Stack after ADD</text>
+  <g filter="url(#table-shadow)">
+    <rect x="670" y="72" width="480" height="234" rx="8" class="body"/>
+  </g>
+  <path d="M678 72 H1142 Q1150 72 1150 80 V126 H670 V80 Q670 72 678 72 Z" class="head"/>
+  <g class="grid">
+    <line x1="670" y1="126" x2="1150" y2="126"/>
+    <line x1="670" y1="186" x2="1150" y2="186"/>
+    <line x1="670" y1="246" x2="1150" y2="246"/>
+    <line x1="830" y1="72" x2="830" y2="306"/>
+    <line x1="990" y1="72" x2="990" y2="306"/>
+  </g>
+  <text x="750" y="106" class="header" text-anchor="middle">SP</text>
+  <text x="910" y="106" class="header" text-anchor="middle">Address</text>
+  <text x="1070" y="106" class="header" text-anchor="middle">Value</text>
+  <text x="750" y="162" class="cell" text-anchor="middle">3</text>
+  <text x="910" y="162" class="cell" text-anchor="middle">2</text>
+  <text x="1070" y="162" class="mono" text-anchor="middle">13</text>
+  <text x="750" y="222" class="cell" text-anchor="middle">2</text>
+  <text x="910" y="222" class="cell" text-anchor="middle">1</text>
+  <text x="1070" y="222" class="mono" text-anchor="middle">7</text>
+  <text x="750" y="282" class="cell" text-anchor="middle">1</text>
+  <text x="910" y="282" class="cell" text-anchor="middle">0</text>
+  <text x="1070" y="282" class="mono" text-anchor="middle">2</text>
+</svg>

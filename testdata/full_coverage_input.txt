@@ -1,0 +1,270 @@
+[Byte_Table]
+# Root transaction.
+0 0x00
+
+# Arithmetic and comparison coverage. Each result is stored in memory so the
+# stack remains easy to reason about and can later be loaded again.
+# ADD: 7 + 5 = 12, store at 0.
+0 0x55
+0 5
+0 0x55
+0 7
+0 0x01
+0 0x55
+0 0
+0 0x52
+# SUB: 10 - 2 = 8, store at 32.
+0 0x55
+0 2
+0 0x55
+0 10
+0 0x03
+0 0x55
+0 32
+0 0x52
+# MUL: 6 * 7 = 42, store at 64.
+0 0x55
+0 7
+0 0x55
+0 6
+0 0x02
+0 0x55
+0 64
+0 0x52
+# DIV: 20 / 4 = 5, store at 96.
+0 0x55
+0 4
+0 0x55
+0 20
+0 0x04
+0 0x55
+0 96
+0 0x52
+# LT true and false; EQ true and false. Store each boolean at 128..224.
+0 0x55
+0 2
+0 0x55
+0 10
+0 0x10
+0 0x55
+0 128
+0 0x52
+0 0x55
+0 10
+0 0x55
+0 2
+0 0x10
+0 0x55
+0 160
+0 0x52
+0 0x55
+0 9
+0 0x55
+0 9
+0 0x14
+0 0x55
+0 192
+0 0x52
+0 0x55
+0 8
+0 0x55
+0 9
+0 0x14
+0 0x55
+0 224
+0 0x52
+
+# Bitwise coverage: AND, OR, XOR, and NOT; store each result.
+0 0x55
+0 0xaa
+0 0x55
+0 0xf0
+0 0x16
+0 0x55
+0 256
+0 0x52
+0 0x55
+0 0x0f
+0 0x55
+0 0xf0
+0 0x17
+0 0x55
+0 288
+0 0x52
+0 0x55
+0 0x0f
+0 0x55
+0 0xff
+0 0x18
+0 0x55
+0 320
+0 0x52
+0 0x55
+0 0
+0 0x19
+0 0x55
+0 352
+0 0x52
+
+# MLOAD reads a fully initialized 32-byte word. READ consumes one symbolic key.
+0 0x55
+0 0
+0 0x51
+0 0x54
+
+# MSTORE8 initializes one byte. Root CALLDATACOPY copies five public calldata
+# bytes to memory at 200; CALL will pass that initialized range to its child.
+0 0x55
+0 0xab
+0 0x55
+0 400
+0 0x53
+0 0x55
+0 5
+0 0x55
+0 0
+0 0x55
+0 200
+0 0x37
+
+# Exercise JUMP and both JUMPCON outcomes while retaining valid jump targets.
+# Push destination 114, then jump to the immediately following JUMPDEST.
+0 0x55
+0 114
+0 0x56
+0 0x5b
+# Nonzero condition takes the jump to PC 121.
+0 0x55
+0 1
+0 0x55
+0 121
+0 0x57
+0 0xaa
+0 0x5b
+# Zero condition falls through to the immediately following JUMPDEST.
+0 0x55
+0 0
+0 0x55
+0 127
+0 0x57
+0 0x5b
+
+# CALL operands bottom-to-top: value, calldata length, callee, requested
+# returndata length, returndata offset, calldata offset. Child 1 receives the
+# five bytes previously written at parent memory [200,205).
+0 0x55
+0 0
+0 0x55
+0 5
+0 0x55
+0 0xdeadbeef
+0 0x55
+0 5
+0 0x55
+0 500
+0 0x55
+0 200
+0 0xf1
+# RETURNDATACOPY copies five returned bytes from offset 0 to parent memory 600.
+0 0x55
+0 5
+0 0x55
+0 0
+0 0x55
+0 600
+0 0x3e
+# Root calls child 3 after child 1 has returned; child 3 receives the same
+# initialized root-memory bytes. This adds a second root child execution.
+0 0x55
+0 0
+0 0x55
+0 5
+0 0x55
+0 0xdeadbeef
+0 0x55
+0 5
+0 0x55
+0 700
+0 0x55
+0 200
+0 0xf1
+# Copy child 3's five returned bytes to root memory at 800.
+0 0x55
+0 5
+0 0x55
+0 0
+0 0x55
+0 800
+0 0x3e
+0 0xfe
+0 0xff
+
+# Child 1: copy calldata to memory, call child 2 using that initialized memory,
+# then return the original five bytes to the root.
+1 0x55
+1 5
+1 0x55
+1 0
+1 0x55
+1 0
+1 0x37
+# Nested CALL creates logical child 2. Its returned bytes are placed at offset
+# 10 in child 1 memory; child 1 then returns its original bytes from offset 0.
+1 0x55
+1 0
+1 0x55
+1 5
+1 0x55
+1 0xdeadbeef
+1 0x55
+1 5
+1 0x55
+1 10
+1 0x55
+1 0
+1 0xf1
+1 0x55
+1 5
+1 0x55
+1 0
+1 0xf3
+
+# Child 2: copy its five-byte calldata into its own memory and return it.
+2 0x55
+2 5
+2 0x55
+2 0
+2 0x55
+2 0
+2 0x37
+2 0x55
+2 5
+2 0x55
+2 0
+2 0xf3
+
+# Child 3 is a second root child execution with the same bytecode behavior.
+3 0x55
+3 5
+3 0x55
+3 0
+3 0x55
+3 0
+3 0x37
+3 0x55
+3 5
+3 0x55
+3 0
+3 0xf3
+
+[TX_Table]
+# Root calldata bytes at indexes 0..4, then required singleton metadata.
+1 0x11
+1 0x22
+1 0x33
+1 0x44
+1 0x55
+4 0x1111
+5 0x2222
+7 0
+8 5

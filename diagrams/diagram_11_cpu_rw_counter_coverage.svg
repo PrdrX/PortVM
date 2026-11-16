@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1400"
+   height="752"
+   viewBox="0 0 1400 752"
+   role="img"
+   aria-labelledby="title description"
+   version="1.1"
+   id="svg106"
+   sodipodi:docname="diagram_11_cpu_rw_counter_coverage.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview106"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.66888298"
+     inkscape:cx="731.8171"
+     inkscape:cy="320.6839"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg106" />
+  <title
+     id="title">CPU operations and their RWTrace records</title>
+  <desc
+     id="description">Three CPU operations consume every RW counter from zero through four. Two WRITE operations each produce one stack write, and ADD produces two stack reads followed by one stack write.</desc>
+  <defs
+     id="defs1">
+    <filter
+       id="table-shadow"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feDropShadow
+         dx="0"
+         dy="8"
+         stdDeviation="12"
+         flood-color="#000000"
+         flood-opacity="0.35" />
+    </filter>
+    <style
+       id="style1">
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #f1f3f5; }
+      .subtitle { font: 500 12px Inter, ui-sans-serif, system-ui, sans-serif; fill: #858e9a; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #e6e9ed; }
+      .muted { fill: #7f8793; }
+      .active { font: 700 14px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #ffffff; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+    </style>
+  </defs>
+  <rect
+     width="1400"
+     height="752"
+     fill="#101116"
+     id="rect1" />
+  <!-- CPU -->
+  <text
+     x="40"
+     y="42"
+     class="title"
+     id="text1">CPU</text>
+  <text
+     x="1360"
+     y="42"
+     class="subtitle"
+     text-anchor="end"
+     id="text2">each RW counter marks the first record consumed by that opcode</text>
+  <g
+     filter="url(#table-shadow)"
+     id="g2">
+    <rect
+       x="40"
+       y="64"
+       width="1320"
+       height="220"
+       rx="8"
+       class="body"
+       id="rect2" />
+  </g>
+  <path
+     d="M48 64 H1352 Q1360 64 1360 72 V128 H40 V72 Q40 64 48 64 Z"
+     class="head"
+     id="path2" />
+  <g
+     class="grid"
+     id="g12">
+    <line
+       x1="40"
+       y1="128"
+       x2="1360"
+       y2="128"
+       id="line2" />
+    <line
+       x1="40"
+       y1="180"
+       x2="1360"
+       y2="180"
+       id="line3" />
+    <line
+       x1="40"
+       y1="232"
+       x2="1360"
+       y2="232"
+       id="line4" />
+    <line
+       x1="120"
+       y1="64"
+       x2="120"
+       y2="284"
+       id="line5" />
+    <line
+       x1="245"
+       y1="64"
+       x2="245"
+       y2="284"
+       id="line6" />
+    <line
+       x1="345"
+       y1="64"
+       x2="345"
+       y2="284"
+       id="line7" />
+    <line
+       x1="505"
+       y1="64"
+       x2="505"
+       y2="284"
+       id="line8" />
+    <line
+       x1="610"
+       y1="64"
+       x2="610"
+       y2="284"
+       id="line9" />
+    <line
+       x1="825"
+       y1="64"
+       x2="825"
+       y2="284"
+       id="line10" />
+    <line
+       x1="1000"
+       y1="64"
+       x2="1000"
+       y2="284"
+       id="line11" />
+    <line
+       x1="1175"
+       y1="64"
+       x2="1175"
+       y2="284"
+       id="line12" />
+  </g>
+  <text
+     x="80"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text12">Row</text>
+  <text
+     x="182.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text13">Call ID</text>
+  <text
+     x="295"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text14">PC</text>
+  <text
+     x="425"
+     y="95"
+     class="header"
+     text-anchor="middle"
+     id="text15"><tspan
+       x="425"
+       id="tspan14">RW counter</tspan><tspan
+       x="425"
+       dy="17"
+       id="tspan15">(start)</tspan></text>
+  <text
+     x="557.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text16">SP</text>
+  <text
+     x="717.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text17">Opcode</text>
+  <text
+     x="912.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text18">rlc_a</text>
+  <text
+     x="1087.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text19">rlc_b</text>
+  <text
+     x="1267.5"
+     y="104"
+     class="header"
+     text-anchor="middle"
+     id="text20">rlc_c</text>
+  <text
+     x="80"
+     y="162"
+     class="cell"
+     text-anchor="middle"
+     id="text21">0</text>
+  <text
+     x="182.5"
+     y="162"
+     class="cell"
+     text-anchor="middle"
+     id="text22">1</text>
+  <text
+     x="295"
+     y="162"
+     class="cell"
+     text-anchor="middle"
+     id="text23">0</text>
+  <text
+     x="425"
+     y="162"
+     class="active"
+     text-anchor="middle"
+     id="text24">0</text>
+  <text
+     x="557.5"
+     y="162"
+     class="cell"
+     text-anchor="middle"
+     id="text25">0</text>
+  <text
+     x="717.5"
+     y="162"
+     class="mono"
+     text-anchor="middle"
+     id="text26">0x55 (WRITE)</text>
+  <text
+     x="912.5"
+     y="162"
+     class="mono muted"
+     text-anchor="middle"
+     id="text27">0</text>
+  <text
+     x="1087.5"
+     y="162"
+     class="mono muted"
+     text-anchor="middle"
+     id="text28">0</text>
+  <text
+     x="1267.5"
+     y="162"
+     class="mono"
+     text-anchor="middle"
+     id="text29">9</text>
+  <text
+     x="80"
+     y="214"
+     class="cell"
+     text-anchor="middle"
+     id="text30">1</text>
+  <text
+     x="182.5"
+     y="214"
+     class="cell"
+     text-anchor="middle"
+     id="text31">1</text>
+  <text
+     x="295"
+     y="214"
+     class="cell"
+     text-anchor="middle"
+     id="text32">2</text>
+  <text
+     x="425"
+     y="214"
+     class="active"
+     text-anchor="middle"
+     id="text33">1</text>
+  <text
+     x="557.5"
+     y="214"
+     class="cell"
+     text-anchor="middle"
+     id="text34">1</text>
+  <text
+     x="717.5"
+     y="214"
+     class="mono"
+     text-anchor="middle"
+     id="text35">0x55 (WRITE)</text>
+  <text
+     x="912.5"
+     y="214"
+     class="mono muted"
+     text-anchor="middle"
+     id="text36">0</text>
+  <text
+     x="1087.5"
+     y="214"
+     class="mono muted"
+     text-anchor="middle"
+     id="text37">0</text>
+  <text
+     x="1267.5"
+     y="214"
+     class="mono"
+     text-anchor="middle"
+     id="text38">4</text>
+  <text
+     x="80"
+     y="266"
+     class="cell"
+     text-anchor="middle"
+     id="text39">2</text>
+  <text
+     x="182.5"
+     y="266"
+     class="cell"
+     text-anchor="middle"
+     id="text40">1</text>
+  <text
+     x="295"
+     y="266"
+     class="cell"
+     text-anchor="middle"
+     id="text41">4</text>
+  <text
+     x="425"
+     y="266"
+     class="active"
+     text-anchor="middle"
+     id="text42">2</text>
+  <text
+     x="557.5"
+     y="266"
+     class="cell"
+     text-anchor="middle"
+     id="text43">2</text>
+  <text
+     x="717.5"
+     y="266"
+     class="mono"
+     text-anchor="middle"
+     id="text44">0x01 (ADD)</text>
+  <text
+     x="912.5"
+     y="266"
+     class="mono"
+     text-anchor="middle"
+     id="text45">4</text>
+  <text
+     x="1087.5"
+     y="266"
+     class="mono"
+     text-anchor="middle"
+     id="text46">9</text>
+  <text
+     x="1267.5"
+     y="266"
+     class="mono"
+     text-anchor="middle"
+     id="text47">13</text>
+  <!-- RWTrace -->
+  <text
+     x="40"
+     y="358"
+     class="title"
+     id="text48">RWTrace</text>
+  <g
+     filter="url(#table-shadow)"
+     id="g48">
+    <rect
+       x="40"
+       y="380"
+       width="1320"
+       height="324"
+       rx="8"
+       class="body"
+       id="rect48" />
+  </g>
+  <path
+     d="M48 380 H1352 Q1360 380 1360 388 V444 H40 V388 Q40 380 48 380 Z"
+     class="head"
+     id="path48" />
+  <g
+     class="grid"
+     id="g59">
+    <line
+       x1="40"
+       y1="444"
+       x2="1360"
+       y2="444"
+       id="line48" />
+    <line
+       x1="40"
+       y1="496"
+       x2="1360"
+       y2="496"
+       id="line49" />
+    <line
+       x1="40"
+       y1="548"
+       x2="1360"
+       y2="548"
+       id="line50" />
+    <line
+       x1="40"
+       y1="600"
+       x2="1360"
+       y2="600"
+       id="line51" />
+    <line
+       x1="40"
+       y1="652"
+       x2="1360"
+       y2="652"
+       id="line52" />
+    <line
+       x1="180"
+       y1="380"
+       x2="180"
+       y2="704"
+       id="line53" />
+    <line
+       x1="330"
+       y1="380"
+       x2="330"
+       y2="704"
+       id="line54" />
+    <line
+       x1="500"
+       y1="380"
+       x2="500"
+       y2="704"
+       id="line55" />
+    <line
+       x1="660"
+       y1="380"
+       x2="660"
+       y2="704"
+       id="line56" />
+    <line
+       x1="840"
+       y1="380"
+       x2="840"
+       y2="704"
+       id="line57" />
+    <line
+       x1="1030"
+       y1="380"
+       x2="1030"
+       y2="704"
+       id="line58" />
+    <line
+       x1="1170"
+       y1="380"
+       x2="1170"
+       y2="704"
+       id="line59" />
+  </g>
+  <text
+     x="110"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text59">Tag</text>
+  <text
+     x="255"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text60">Call ID</text>
+  <text
+     x="415"
+     y="411"
+     class="header"
+     text-anchor="middle"
+     id="text61"><tspan
+       x="415"
+       id="tspan60">Address</tspan><tspan
+       x="415"
+       dy="17"
+       id="tspan61">(Stack Pointer)</tspan></text>
+  <text
+     x="580"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text62">Field tag</text>
+  <text
+     x="750"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text63">Storage key</text>
+  <text
+     x="935"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text64">RW counter</text>
+  <text
+     x="1100"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text65">iswrite</text>
+  <text
+     x="1265"
+     y="420"
+     class="header"
+     text-anchor="middle"
+     id="text66">Value</text>
+  <text
+     x="110"
+     y="478"
+     class="cell"
+     text-anchor="middle"
+     id="text67">2 (stack)</text>
+  <text
+     x="255"
+     y="478"
+     class="cell"
+     text-anchor="middle"
+     id="text68">1</text>
+  <text
+     x="415"
+     y="478"
+     class="cell"
+     text-anchor="middle"
+     id="text69">0</text>
+  <text
+     x="580"
+     y="478"
+     class="cell"
+     text-anchor="middle"
+     id="text70">0</text>
+  <text
+     x="750"
+     y="478"
+     class="cell"
+     text-anchor="middle"
+     id="text71">0</text>
+  <text
+     x="935"
+     y="478"
+     class="active"
+     text-anchor="middle"
+     id="text72">0</text>
+  <text
+     x="1100"
+     y="478"
+     class="active"
+     text-anchor="middle"
+     id="text73">1</text>
+  <text
+     x="1265"
+     y="478"
+     class="mono"
+     text-anchor="middle"
+     id="text74">9</text>
+  <text
+     x="110"
+     y="530"
+     class="cell"
+     text-anchor="middle"
+     id="text75">2 (stack)</text>
+  <text
+     x="255"
+     y="530"
+     class="cell"
+     text-anchor="middle"
+     id="text76">1</text>
+  <text
+     x="415"
+     y="530"
+     class="cell"
+     text-anchor="middle"
+     id="text77">1</text>
+  <text
+     x="580"
+     y="530"
+     class="cell"
+     text-anchor="middle"
+     id="text78">0</text>
+  <text
+     x="750"
+     y="530"
+     class="cell"
+     text-anchor="middle"
+     id="text79">0</text>
+  <text
+     x="935"
+     y="530"
+     class="active"
+     text-anchor="middle"
+     id="text80">1</text>
+  <text
+     x="1100"
+     y="530"
+     class="active"
+     text-anchor="middle"
+     id="text81">1</text>
+  <text
+     x="1265"
+     y="530"
+     class="mono"
+     text-anchor="middle"
+     id="text82">4</text>
+  <text
+     x="110"
+     y="582"
+     class="cell"
+     text-anchor="middle"
+     id="text83">2 (stack)</text>
+  <text
+     x="255"
+     y="582"
+     class="cell"
+     text-anchor="middle"
+     id="text84">1</text>
+  <text
+     x="415"
+     y="582"
+     class="cell"
+     text-anchor="middle"
+     id="text85">1</text>
+  <text
+     x="580"
+     y="582"
+     class="cell"
+     text-anchor="middle"
+     id="text86">0</text>
+  <text
+     x="750"
+     y="582"
+     class="cell"
+     text-anchor="middle"
+     id="text87">0</text>
+  <text
+     x="935"
+     y="582"
+     class="active"
+     text-anchor="middle"
+     id="text88">2</text>
+  <text
+     x="1100"
+     y="582"
+     class="mono muted"
+     text-anchor="middle"
+     id="text89">0</text>
+  <text
+     x="1265"
+     y="582"
+     class="mono"
+     text-anchor="middle"
+     id="text90">4</text>
+  <text
+     x="110"
+     y="634"
+     class="cell"
+     text-anchor="middle"
+     id="text91">2 (stack)</text>
+  <text
+     x="255"
+     y="634"
+     class="cell"
+     text-anchor="middle"
+     id="text92">1</text>
+  <text
+     x="415"
+     y="634"
+     class="cell"
+     text-anchor="middle"
+     id="text93">0</text>
+  <text
+     x="580"
+     y="634"
+     class="cell"
+     text-anchor="middle"
+     id="text94">0</text>
+  <text
+     x="750"
+     y="634"
+     class="cell"
+     text-anchor="middle"
+     id="text95">0</text>
+  <text
+     x="935"
+     y="634"
+     class="active"
+     text-anchor="middle"
+     id="text96">3</text>
+  <text
+     x="1100"
+     y="634"
+     class="mono muted"
+     text-anchor="middle"
+     id="text97">0</text>
+  <text
+     x="1265"
+     y="634"
+     class="mono"
+     text-anchor="middle"
+     id="text98">9</text>
+  <text
+     x="110"
+     y="686"
+     class="cell"
+     text-anchor="middle"
+     id="text99">2 (stack)</text>
+  <text
+     x="255"
+     y="686"
+     class="cell"
+     text-anchor="middle"
+     id="text100">1</text>
+  <text
+     x="415"
+     y="686"
+     class="cell"
+     text-anchor="middle"
+     id="text101">0</text>
+  <text
+     x="580"
+     y="686"
+     class="cell"
+     text-anchor="middle"
+     id="text102">0</text>
+  <text
+     x="750"
+     y="686"
+     class="cell"
+     text-anchor="middle"
+     id="text103">0</text>
+  <text
+     x="935"
+     y="686"
+     class="active"
+     text-anchor="middle"
+     id="text104">4</text>
+  <text
+     x="1100"
+     y="686"
+     class="active"
+     text-anchor="middle"
+     id="text105">1</text>
+  <text
+     x="1265"
+     y="686"
+     class="mono"
+     text-anchor="middle"
+     id="text106">13</text>
+  <path
+     style="fill:#9e1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#e10010;stroke-width:2.3;stroke-opacity:1"
+     d="M 463.45924,153.98807 894.02783,472.42942"
+     id="path106" />
+  <path
+     style="fill:#9e1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#dee100;stroke-width:2.3;stroke-opacity:1"
+     d="M 455.76334,205.8252 886.33193,524.26655"
+     id="path106-7" />
+  <path
+     style="fill:#9e1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#00e126;stroke-width:2.20793;stroke-opacity:1"
+     d="M 447.24426,265.65058 855.43948,575.19265"
+     id="path106-7-7" />
+  <path
+     style="fill:#9e1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#00e126;stroke-width:2.38518;stroke-opacity:1"
+     d="M 445.23521,265.38593 856.29942,624.10144"
+     id="path106-7-7-3" />
+  <path
+     style="fill:#9e1f1f;fill-opacity:1;fill-rule:evenodd;stroke:#00e126;stroke-width:2.59824;stroke-opacity:1"
+     d="M 445.05993,266.62079 855.9741,692.44054"
+     id="path106-7-7-3-8" />
+</svg>

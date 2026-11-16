@@ -1,0 +1,1798 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1400"
+   height="1500"
+   viewBox="0 0 1400 1500"
+   role="img"
+   aria-labelledby="title description"
+   version="1.1"
+   id="svg263"
+   sodipodi:docname="diagram_09_alu_memory_chunk.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview263"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.9484659"
+     inkscape:cx="801.82113"
+     inkscape:cy="336.85977"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg263" />
+  <title
+     id="title">Thirty-two-row ALU memory chunk</title>
+  <desc
+     id="description">A CPU MSTORE row feeds a 32-byte ALU memory chunk, whose sequential byte writes are recorded in RWTrace.</desc>
+  <defs
+     id="defs1">
+    <filter
+       id="table-shadow"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feDropShadow
+         dx="0"
+         dy="8"
+         stdDeviation="12"
+         flood-color="#000000"
+         flood-opacity="0.35" />
+    </filter>
+    <style
+       id="style1">
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #f1f3f5; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #e6e9ed; }
+      .byte { font: 500 12px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #e6e9ed; }
+      .index { font: 500 10px Inter, ui-sans-serif, system-ui, sans-serif; fill: #7f8793; }
+      .muted { fill: #7f8793; }
+      .active { font: 700 14px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #ffffff; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+    </style>
+  </defs>
+  <rect
+     width="1400"
+     height="1500"
+     fill="#101116"
+     id="rect1" />
+  <!-- CPU MSTORE row -->
+  <text
+     x="40"
+     y="38"
+     class="title"
+     id="text1">CPU</text>
+  <g
+     filter="url(#table-shadow)"
+     id="g2">
+    <rect
+       x="40"
+       y="56"
+       width="1320"
+       height="122"
+       rx="8"
+       class="body"
+       id="rect2" />
+  </g>
+  <path
+     d="M48 56 H1352 Q1360 56 1360 64 V112 H40 V64 Q40 56 48 56 Z"
+     class="head"
+     id="path2" />
+  <g
+     class="grid"
+     id="g9">
+    <line
+       x1="40"
+       y1="112"
+       x2="1360"
+       y2="112"
+       id="line2" />
+    <line
+       x1="100"
+       y1="56"
+       x2="100"
+       y2="178"
+       id="line3" />
+    <line
+       x1="210"
+       y1="56"
+       x2="210"
+       y2="178"
+       id="line4" />
+    <line
+       x1="340"
+       y1="56"
+       x2="340"
+       y2="178"
+       id="line5" />
+    <line
+       x1="420"
+       y1="56"
+       x2="420"
+       y2="178"
+       id="line6" />
+    <line
+       x1="600"
+       y1="56"
+       x2="600"
+       y2="178"
+       id="line7" />
+    <line
+       x1="800"
+       y1="56"
+       x2="800"
+       y2="178"
+       id="line8" />
+    <line
+       x1="1100"
+       y1="56"
+       x2="1100"
+       y2="178"
+       id="line9" />
+  </g>
+  <text
+     x="70"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text9">Row</text>
+  <text
+     x="155"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text10">Call ID</text>
+  <text
+     x="275"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text11">RW counter</text>
+  <text
+     x="380"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text12">SP</text>
+  <text
+     x="510"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text13">Opcode</text>
+  <text
+     x="700"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text14">rlc_a</text>
+  <text
+     x="950"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text15">rlc_b</text>
+  <text
+     x="1230"
+     y="92"
+     class="header"
+     text-anchor="middle"
+     id="text16">ismstore</text>
+  <text
+     x="70"
+     y="150"
+     class="cell"
+     text-anchor="middle"
+     id="text17">12</text>
+  <text
+     x="155"
+     y="150"
+     class="cell"
+     text-anchor="middle"
+     id="text18">1</text>
+  <text
+     x="275"
+     y="150"
+     class="cell"
+     text-anchor="middle"
+     id="text19">38</text>
+  <text
+     x="380"
+     y="150"
+     class="cell"
+     text-anchor="middle"
+     id="text20">4</text>
+  <text
+     x="510"
+     y="150"
+     class="mono"
+     text-anchor="middle"
+     id="text21">0x52 (MSTORE)</text>
+  <text
+     x="700"
+     y="150"
+     class="mono"
+     text-anchor="middle"
+     id="text22">64 (address)</text>
+  <text
+     x="950"
+     y="150"
+     class="mono"
+     text-anchor="middle"
+     id="text23">RLC(word)</text>
+  <text
+     x="1230"
+     y="150"
+     class="active"
+     text-anchor="middle"
+     id="text24">1</text>
+  <g
+     transform="translate(0 190)"
+     id="g157">
+    <text
+       x="40"
+       y="52"
+       class="title"
+       id="text25">ALU</text>
+    <g
+       filter="url(#table-shadow)"
+       id="g25">
+      <rect
+         x="40"
+         y="72"
+         width="1320"
+         height="520"
+         rx="8"
+         class="body"
+         id="rect25" />
+    </g>
+    <path
+       d="M48 72 H1352 Q1360 72 1360 80 V142 H40 V80 Q40 72 48 72 Z"
+       class="head"
+       id="path25" />
+    <g
+       class="grid"
+       id="g41">
+      <line
+         x1="40"
+         y1="142"
+         x2="1360"
+         y2="142"
+         id="line25" />
+      <line
+         x1="40"
+         y1="192"
+         x2="1360"
+         y2="192"
+         id="line26" />
+      <line
+         x1="40"
+         y1="242"
+         x2="1360"
+         y2="242"
+         id="line27" />
+      <line
+         x1="40"
+         y1="292"
+         x2="1360"
+         y2="292"
+         id="line28" />
+      <line
+         x1="40"
+         y1="342"
+         x2="1360"
+         y2="342"
+         id="line29" />
+      <line
+         x1="40"
+         y1="392"
+         x2="1360"
+         y2="392"
+         id="line30" />
+      <line
+         x1="40"
+         y1="442"
+         x2="1360"
+         y2="442"
+         id="line31" />
+      <line
+         x1="40"
+         y1="492"
+         x2="1360"
+         y2="492"
+         id="line32" />
+      <line
+         x1="40"
+         y1="542"
+         x2="1360"
+         y2="542"
+         id="line33" />
+      <line
+         x1="100"
+         y1="72"
+         x2="100"
+         y2="592"
+         id="line34" />
+      <line
+         x1="210"
+         y1="72"
+         x2="210"
+         y2="592"
+         id="line35" />
+      <line
+         x1="340"
+         y1="72"
+         x2="340"
+         y2="592"
+         id="line36" />
+      <line
+         x1="430"
+         y1="72"
+         x2="430"
+         y2="592"
+         id="line37" />
+      <line
+         x1="600"
+         y1="72"
+         x2="600"
+         y2="592"
+         id="line38" />
+      <line
+         x1="1050"
+         y1="72"
+         x2="1050"
+         y2="592"
+         id="line39" />
+      <line
+         x1="1150"
+         y1="72"
+         x2="1150"
+         y2="592"
+         id="line40" />
+      <line
+         x1="1250"
+         y1="72"
+         x2="1250"
+         y2="592"
+         id="line41" />
+    </g>
+    <text
+       x="70"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text41">Row</text>
+    <text
+       x="155"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text42">Address</text>
+    <text
+       x="275"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text43">RW counter</text>
+    <text
+       x="385"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text44">Call ID</text>
+    <text
+       x="515"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text45">Byte</text>
+    <text
+       x="825"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text46">rlc_a</text>
+    <text
+       x="1100"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text47">ismload</text>
+    <text
+       x="1200"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text48">ismstore</text>
+    <text
+       x="1305"
+       y="114"
+       class="header"
+       text-anchor="middle"
+       id="text49">ismstore8</text>
+    <!-- Rows 1-4 -->
+    <text
+       x="70"
+       y="174"
+       class="cell"
+       text-anchor="middle"
+       id="text50">1</text>
+    <text
+       x="155"
+       y="174"
+       class="cell"
+       text-anchor="middle"
+       id="text51">64</text>
+    <text
+       x="275"
+       y="174"
+       class="cell"
+       text-anchor="middle"
+       id="text52">40</text>
+    <text
+       x="385"
+       y="174"
+       class="cell"
+       text-anchor="middle"
+       id="text53">1</text>
+    <text
+       x="515"
+       y="174"
+       class="byte"
+       text-anchor="middle"
+       id="text54">10100101 (165)</text>
+    <text
+       x="825"
+       y="174"
+       class="mono"
+       text-anchor="middle"
+       id="text55">RLC(word)</text>
+    <text
+       x="1100"
+       y="174"
+       class="mono muted"
+       text-anchor="middle"
+       id="text56">0</text>
+    <text
+       x="1200"
+       y="174"
+       class="active"
+       text-anchor="middle"
+       id="text57">1</text>
+    <text
+       x="1305"
+       y="174"
+       class="mono muted"
+       text-anchor="middle"
+       id="text58">0</text>
+    <text
+       x="70"
+       y="224"
+       class="cell"
+       text-anchor="middle"
+       id="text59">2</text>
+    <text
+       x="155"
+       y="224"
+       class="cell"
+       text-anchor="middle"
+       id="text60">65</text>
+    <text
+       x="275"
+       y="224"
+       class="cell"
+       text-anchor="middle"
+       id="text61">41</text>
+    <text
+       x="385"
+       y="224"
+       class="cell"
+       text-anchor="middle"
+       id="text62">1</text>
+    <text
+       x="515"
+       y="224"
+       class="byte"
+       text-anchor="middle"
+       id="text63">00110110 (54)</text>
+    <text
+       x="825"
+       y="224"
+       class="mono muted"
+       text-anchor="middle"
+       id="text64">0</text>
+    <text
+       x="1100"
+       y="224"
+       class="mono muted"
+       text-anchor="middle"
+       id="text65">0</text>
+    <text
+       x="1200"
+       y="224"
+       class="active"
+       text-anchor="middle"
+       id="text66">1</text>
+    <text
+       x="1305"
+       y="224"
+       class="mono muted"
+       text-anchor="middle"
+       id="text67">0</text>
+    <text
+       x="70"
+       y="274"
+       class="cell"
+       text-anchor="middle"
+       id="text68">3</text>
+    <text
+       x="155"
+       y="274"
+       class="cell"
+       text-anchor="middle"
+       id="text69">66</text>
+    <text
+       x="275"
+       y="274"
+       class="cell"
+       text-anchor="middle"
+       id="text70">42</text>
+    <text
+       x="385"
+       y="274"
+       class="cell"
+       text-anchor="middle"
+       id="text71">1</text>
+    <text
+       x="515"
+       y="274"
+       class="byte"
+       text-anchor="middle"
+       id="text72">11100010 (226)</text>
+    <text
+       x="825"
+       y="274"
+       class="mono muted"
+       text-anchor="middle"
+       id="text73">0</text>
+    <text
+       x="1100"
+       y="274"
+       class="mono muted"
+       text-anchor="middle"
+       id="text74">0</text>
+    <text
+       x="1200"
+       y="274"
+       class="active"
+       text-anchor="middle"
+       id="text75">1</text>
+    <text
+       x="1305"
+       y="274"
+       class="mono muted"
+       text-anchor="middle"
+       id="text76">0</text>
+    <text
+       x="70"
+       y="324"
+       class="cell"
+       text-anchor="middle"
+       id="text77">4</text>
+    <text
+       x="155"
+       y="324"
+       class="cell"
+       text-anchor="middle"
+       id="text78">67</text>
+    <text
+       x="275"
+       y="324"
+       class="cell"
+       text-anchor="middle"
+       id="text79">43</text>
+    <text
+       x="385"
+       y="324"
+       class="cell"
+       text-anchor="middle"
+       id="text80">1</text>
+    <text
+       x="515"
+       y="324"
+       class="byte"
+       text-anchor="middle"
+       id="text81">00011101 (29)</text>
+    <text
+       x="825"
+       y="324"
+       class="mono muted"
+       text-anchor="middle"
+       id="text82">0</text>
+    <text
+       x="1100"
+       y="324"
+       class="mono muted"
+       text-anchor="middle"
+       id="text83">0</text>
+    <text
+       x="1200"
+       y="324"
+       class="active"
+       text-anchor="middle"
+       id="text84">1</text>
+    <text
+       x="1305"
+       y="324"
+       class="mono muted"
+       text-anchor="middle"
+       id="text85">0</text>
+    <!-- Omitted middle rows -->
+    <text
+       x="70"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text86">...</text>
+    <text
+       x="155"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text87">...</text>
+    <text
+       x="275"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text88">...</text>
+    <text
+       x="385"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text89">...</text>
+    <text
+       x="515"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text90">...</text>
+    <text
+       x="825"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text91">...</text>
+    <text
+       x="1100"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text92">...</text>
+    <text
+       x="1200"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text93">...</text>
+    <text
+       x="1305"
+       y="374"
+       class="mono muted"
+       text-anchor="middle"
+       id="text94">...</text>
+    <!-- Rows 29-32 -->
+    <text
+       x="70"
+       y="424"
+       class="cell"
+       text-anchor="middle"
+       id="text95">29</text>
+    <text
+       x="155"
+       y="424"
+       class="cell"
+       text-anchor="middle"
+       id="text96">92</text>
+    <text
+       x="275"
+       y="424"
+       class="cell"
+       text-anchor="middle"
+       id="text97">68</text>
+    <text
+       x="385"
+       y="424"
+       class="cell"
+       text-anchor="middle"
+       id="text98">1</text>
+    <text
+       x="515"
+       y="424"
+       class="byte"
+       text-anchor="middle"
+       id="text99">01101100 (108)</text>
+    <text
+       x="825"
+       y="424"
+       class="mono muted"
+       text-anchor="middle"
+       id="text100">0</text>
+    <text
+       x="1100"
+       y="424"
+       class="mono muted"
+       text-anchor="middle"
+       id="text101">0</text>
+    <text
+       x="1200"
+       y="424"
+       class="active"
+       text-anchor="middle"
+       id="text102">1</text>
+    <text
+       x="1305"
+       y="424"
+       class="mono muted"
+       text-anchor="middle"
+       id="text103">0</text>
+    <text
+       x="70"
+       y="474"
+       class="cell"
+       text-anchor="middle"
+       id="text104">30</text>
+    <text
+       x="155"
+       y="474"
+       class="cell"
+       text-anchor="middle"
+       id="text105">93</text>
+    <text
+       x="275"
+       y="474"
+       class="cell"
+       text-anchor="middle"
+       id="text106">69</text>
+    <text
+       x="385"
+       y="474"
+       class="cell"
+       text-anchor="middle"
+       id="text107">1</text>
+    <text
+       x="515"
+       y="474"
+       class="byte"
+       text-anchor="middle"
+       id="text108">10010011 (147)</text>
+    <text
+       x="825"
+       y="474"
+       class="mono muted"
+       text-anchor="middle"
+       id="text109">0</text>
+    <text
+       x="1100"
+       y="474"
+       class="mono muted"
+       text-anchor="middle"
+       id="text110">0</text>
+    <text
+       x="1200"
+       y="474"
+       class="active"
+       text-anchor="middle"
+       id="text111">1</text>
+    <text
+       x="1305"
+       y="474"
+       class="mono muted"
+       text-anchor="middle"
+       id="text112">0</text>
+    <text
+       x="70"
+       y="524"
+       class="cell"
+       text-anchor="middle"
+       id="text113">31</text>
+    <text
+       x="155"
+       y="524"
+       class="cell"
+       text-anchor="middle"
+       id="text114">94</text>
+    <text
+       x="275"
+       y="524"
+       class="cell"
+       text-anchor="middle"
+       id="text115">70</text>
+    <text
+       x="385"
+       y="524"
+       class="cell"
+       text-anchor="middle"
+       id="text116">1</text>
+    <text
+       x="515"
+       y="524"
+       class="byte"
+       text-anchor="middle"
+       id="text117">00101010 (42)</text>
+    <text
+       x="825"
+       y="524"
+       class="mono muted"
+       text-anchor="middle"
+       id="text118">0</text>
+    <text
+       x="1100"
+       y="524"
+       class="mono muted"
+       text-anchor="middle"
+       id="text119">0</text>
+    <text
+       x="1200"
+       y="524"
+       class="active"
+       text-anchor="middle"
+       id="text120">1</text>
+    <text
+       x="1305"
+       y="524"
+       class="mono muted"
+       text-anchor="middle"
+       id="text121">0</text>
+    <text
+       x="70"
+       y="574"
+       class="cell"
+       text-anchor="middle"
+       id="text122">32</text>
+    <text
+       x="155"
+       y="574"
+       class="cell"
+       text-anchor="middle"
+       id="text123">95</text>
+    <text
+       x="275"
+       y="574"
+       class="cell"
+       text-anchor="middle"
+       id="text124">71</text>
+    <text
+       x="385"
+       y="574"
+       class="cell"
+       text-anchor="middle"
+       id="text125">1</text>
+    <text
+       x="515"
+       y="574"
+       class="byte"
+       text-anchor="middle"
+       id="text126">11000111 (199)</text>
+    <text
+       x="825"
+       y="574"
+       class="mono muted"
+       text-anchor="middle"
+       id="text127">0</text>
+    <text
+       x="1100"
+       y="574"
+       class="mono muted"
+       text-anchor="middle"
+       id="text128">0</text>
+    <text
+       x="1200"
+       y="574"
+       class="active"
+       text-anchor="middle"
+       id="text129">1</text>
+    <text
+       x="1305"
+       y="574"
+       class="mono muted"
+       text-anchor="middle"
+       id="text130">0</text>
+    <!-- Compact view of the 32-byte word -->
+    <text
+       x="40"
+       y="632"
+       class="header"
+       id="text131">Full 256-bit memory word</text>
+    <text
+       x="90"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text132">[10100101]₈</text>
+    <text
+       x="145"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text133">|</text>
+    <text
+       x="200"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text134">[00110110]₈</text>
+    <text
+       x="255"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text135">|</text>
+    <text
+       x="310"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text136">[11100010]₈</text>
+    <text
+       x="365"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text137">|</text>
+    <text
+       x="420"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text138">[00011101]₈</text>
+    <text
+       x="470"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text139">|</text>
+    <text
+       x="520"
+       y="670"
+       class="mono muted"
+       text-anchor="middle"
+       id="text140">…</text>
+    <text
+       x="570"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text141">|</text>
+    <text
+       x="620"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text142">[01101100]₈</text>
+    <text
+       x="675"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text143">|</text>
+    <text
+       x="730"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text144">[10010011]₈</text>
+    <text
+       x="785"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text145">|</text>
+    <text
+       x="840"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text146">[00101010]₈</text>
+    <text
+       x="895"
+       y="670"
+       class="muted"
+       text-anchor="middle"
+       id="text147">|</text>
+    <text
+       x="950"
+       y="670"
+       class="byte"
+       text-anchor="middle"
+       id="text148">[11000111]₈</text>
+    <text
+       x="90"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text149">byte 1</text>
+    <text
+       x="200"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text150">byte 2</text>
+    <text
+       x="310"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text151">byte 3</text>
+    <text
+       x="420"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text152">byte 4</text>
+    <text
+       x="520"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text153">…</text>
+    <text
+       x="620"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text154">byte 29</text>
+    <text
+       x="730"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text155">byte 30</text>
+    <text
+       x="840"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text156">byte 31</text>
+    <text
+       x="950"
+       y="691"
+       class="index"
+       text-anchor="middle"
+       id="text157">byte 32</text>
+  </g>
+  <!-- RWTrace memory writes -->
+  <text
+     x="40"
+     y="930"
+     class="title"
+     id="text158">RWTrace</text>
+  <g
+     filter="url(#table-shadow)"
+     id="g158">
+    <rect
+       x="40"
+       y="950"
+       width="1320"
+       height="520"
+       rx="8"
+       class="body"
+       id="rect158" />
+  </g>
+  <path
+     d="M48 950 H1352 Q1360 950 1360 958 V1020 H40 V958 Q40 950 48 950 Z"
+     class="head"
+     id="path158" />
+  <g
+     class="grid"
+     id="g174">
+    <line
+       x1="40"
+       y1="1020"
+       x2="1360"
+       y2="1020"
+       id="line158" />
+    <line
+       x1="40"
+       y1="1070"
+       x2="1360"
+       y2="1070"
+       id="line159" />
+    <line
+       x1="40"
+       y1="1120"
+       x2="1360"
+       y2="1120"
+       id="line160" />
+    <line
+       x1="40"
+       y1="1170"
+       x2="1360"
+       y2="1170"
+       id="line161" />
+    <line
+       x1="40"
+       y1="1220"
+       x2="1360"
+       y2="1220"
+       id="line162" />
+    <line
+       x1="40"
+       y1="1270"
+       x2="1360"
+       y2="1270"
+       id="line163" />
+    <line
+       x1="40"
+       y1="1320"
+       x2="1360"
+       y2="1320"
+       id="line164" />
+    <line
+       x1="40"
+       y1="1370"
+       x2="1360"
+       y2="1370"
+       id="line165" />
+    <line
+       x1="40"
+       y1="1420"
+       x2="1360"
+       y2="1420"
+       id="line166" />
+    <line
+       x1="100"
+       y1="950"
+       x2="100"
+       y2="1470"
+       id="line167" />
+    <line
+       x1="180"
+       y1="950"
+       x2="180"
+       y2="1470"
+       id="line168" />
+    <line
+       x1="290"
+       y1="950"
+       x2="290"
+       y2="1470"
+       id="line169" />
+    <line
+       x1="410"
+       y1="950"
+       x2="410"
+       y2="1470"
+       id="line170" />
+    <line
+       x1="530"
+       y1="950"
+       x2="530"
+       y2="1470"
+       id="line171" />
+    <line
+       x1="680"
+       y1="950"
+       x2="680"
+       y2="1470"
+       id="line172" />
+    <line
+       x1="830"
+       y1="950"
+       x2="830"
+       y2="1470"
+       id="line173" />
+    <line
+       x1="950"
+       y1="950"
+       x2="950"
+       y2="1470"
+       id="line174" />
+  </g>
+  <text
+     x="70"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text174">Row</text>
+  <text
+     x="140"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text175">Tag</text>
+  <text
+     x="235"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text176">Call ID</text>
+  <text
+     x="350"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text177">Address</text>
+  <text
+     x="470"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text178">Field tag</text>
+  <text
+     x="605"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text179">Storage key</text>
+  <text
+     x="755"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text180">RW counter</text>
+  <text
+     x="890"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text181">iswrite</text>
+  <text
+     x="1155"
+     y="992"
+     class="header"
+     text-anchor="middle"
+     id="text182">Value</text>
+  <!-- RWTrace rows 1-4 -->
+  <text
+     x="70"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text183">1</text>
+  <text
+     x="140"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text184">1</text>
+  <text
+     x="235"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text185">1</text>
+  <text
+     x="350"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text186">64</text>
+  <text
+     x="470"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text187">0</text>
+  <text
+     x="605"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text188">0</text>
+  <text
+     x="755"
+     y="1052"
+     class="cell"
+     text-anchor="middle"
+     id="text189">40</text>
+  <text
+     x="890"
+     y="1052"
+     class="active"
+     text-anchor="middle"
+     id="text190">1</text>
+  <text
+     x="1155"
+     y="1052"
+     class="byte"
+     text-anchor="middle"
+     id="text191">10100101 (165)</text>
+  <text
+     x="70"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text192">2</text>
+  <text
+     x="140"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text193">1</text>
+  <text
+     x="235"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text194">1</text>
+  <text
+     x="350"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text195">65</text>
+  <text
+     x="470"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text196">0</text>
+  <text
+     x="605"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text197">0</text>
+  <text
+     x="755"
+     y="1102"
+     class="cell"
+     text-anchor="middle"
+     id="text198">41</text>
+  <text
+     x="890"
+     y="1102"
+     class="active"
+     text-anchor="middle"
+     id="text199">1</text>
+  <text
+     x="1155"
+     y="1102"
+     class="byte"
+     text-anchor="middle"
+     id="text200">00110110 (54)</text>
+  <text
+     x="70"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text201">3</text>
+  <text
+     x="140"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text202">1</text>
+  <text
+     x="235"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text203">1</text>
+  <text
+     x="350"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text204">66</text>
+  <text
+     x="470"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text205">0</text>
+  <text
+     x="605"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text206">0</text>
+  <text
+     x="755"
+     y="1152"
+     class="cell"
+     text-anchor="middle"
+     id="text207">42</text>
+  <text
+     x="890"
+     y="1152"
+     class="active"
+     text-anchor="middle"
+     id="text208">1</text>
+  <text
+     x="1155"
+     y="1152"
+     class="byte"
+     text-anchor="middle"
+     id="text209">11100010 (226)</text>
+  <text
+     x="70"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text210">4</text>
+  <text
+     x="140"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text211">1</text>
+  <text
+     x="235"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text212">1</text>
+  <text
+     x="350"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text213">67</text>
+  <text
+     x="470"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text214">0</text>
+  <text
+     x="605"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text215">0</text>
+  <text
+     x="755"
+     y="1202"
+     class="cell"
+     text-anchor="middle"
+     id="text216">43</text>
+  <text
+     x="890"
+     y="1202"
+     class="active"
+     text-anchor="middle"
+     id="text217">1</text>
+  <text
+     x="1155"
+     y="1202"
+     class="byte"
+     text-anchor="middle"
+     id="text218">00011101 (29)</text>
+  <!-- Omitted RWTrace rows -->
+  <text
+     x="70"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text219">...</text>
+  <text
+     x="140"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text220">...</text>
+  <text
+     x="235"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text221">...</text>
+  <text
+     x="350"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text222">...</text>
+  <text
+     x="470"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text223">...</text>
+  <text
+     x="605"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text224">...</text>
+  <text
+     x="755"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text225">...</text>
+  <text
+     x="890"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text226">...</text>
+  <text
+     x="1155"
+     y="1252"
+     class="mono muted"
+     text-anchor="middle"
+     id="text227">...</text>
+  <!-- RWTrace rows 29-32 -->
+  <text
+     x="70"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text228">29</text>
+  <text
+     x="140"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text229">1</text>
+  <text
+     x="235"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text230">1</text>
+  <text
+     x="350"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text231">92</text>
+  <text
+     x="470"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text232">0</text>
+  <text
+     x="605"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text233">0</text>
+  <text
+     x="755"
+     y="1302"
+     class="cell"
+     text-anchor="middle"
+     id="text234">68</text>
+  <text
+     x="890"
+     y="1302"
+     class="active"
+     text-anchor="middle"
+     id="text235">1</text>
+  <text
+     x="1155"
+     y="1302"
+     class="byte"
+     text-anchor="middle"
+     id="text236">01101100 (108)</text>
+  <text
+     x="70"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text237">30</text>
+  <text
+     x="140"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text238">1</text>
+  <text
+     x="235"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text239">1</text>
+  <text
+     x="350"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text240">93</text>
+  <text
+     x="470"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text241">0</text>
+  <text
+     x="605"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text242">0</text>
+  <text
+     x="755"
+     y="1352"
+     class="cell"
+     text-anchor="middle"
+     id="text243">69</text>
+  <text
+     x="890"
+     y="1352"
+     class="active"
+     text-anchor="middle"
+     id="text244">1</text>
+  <text
+     x="1155"
+     y="1352"
+     class="byte"
+     text-anchor="middle"
+     id="text245">10010011 (147)</text>
+  <text
+     x="70"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text246">31</text>
+  <text
+     x="140"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text247">1</text>
+  <text
+     x="235"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text248">1</text>
+  <text
+     x="350"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text249">94</text>
+  <text
+     x="470"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text250">0</text>
+  <text
+     x="605"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text251">0</text>
+  <text
+     x="755"
+     y="1402"
+     class="cell"
+     text-anchor="middle"
+     id="text252">70</text>
+  <text
+     x="890"
+     y="1402"
+     class="active"
+     text-anchor="middle"
+     id="text253">1</text>
+  <text
+     x="1155"
+     y="1402"
+     class="byte"
+     text-anchor="middle"
+     id="text254">00101010 (42)</text>
+  <text
+     x="70"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text255">32</text>
+  <text
+     x="140"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text256">1</text>
+  <text
+     x="235"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text257">1</text>
+  <text
+     x="350"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text258">95</text>
+  <text
+     x="470"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text259">0</text>
+  <text
+     x="605"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text260">0</text>
+  <text
+     x="755"
+     y="1452"
+     class="cell"
+     text-anchor="middle"
+     id="text261">71</text>
+  <text
+     x="890"
+     y="1452"
+     class="active"
+     text-anchor="middle"
+     id="text262">1</text>
+  <text
+     x="1155"
+     y="1452"
+     class="byte"
+     text-anchor="middle"
+     id="text263">11000111 (199)</text>
+  <path
+     style="fill:#b20000;fill-opacity:1;stroke:#dfe100;stroke-width:2.3;fill-rule:evenodd;stroke-opacity:1"
+     d="M 899.10537,146.12326 875.24851,357.85288"
+     id="path263" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.3;stroke-opacity:1"
+     d="M 621.00282,357.41928 H 575.66646"
+     id="path267" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.44971;stroke-opacity:1"
+     d="m 616.65266,369.07986 -29.2557,54.69959"
+     id="path268" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.38539;stroke-opacity:1"
+     d="m 639.97964,367.96372 -49.5513,95.94222"
+     id="path269" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.46515;stroke-opacity:1"
+     d="M 662.068,370.09778 586.26364,522.92326"
+     id="path270" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.3;stroke-opacity:1"
+     d="M 690.58888,371.12563 590.42713,600.97048"
+     id="path271" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.3;stroke-opacity:1"
+     d="m 718.00157,369.01696 -126.5201,293.1049"
+     id="path272" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.3;stroke-opacity:1"
+     d="M 750.68593,369.01696 593.59014,718.00157"
+     id="path273" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#2ec419;stroke-width:2.3;stroke-opacity:1"
+     d="M 779.15295,367.96262 596.75314,771.77261"
+     id="path274" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.3;stroke-opacity:1"
+     d="M 508.18907,366.90829 1132.3549,1037.4648"
+     id="path275" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.3;stroke-opacity:1"
+     d="M 501.40835,421.63215 1125.5742,1092.1886"
+     id="path275-3" />
+  <path
+     style="fill:#b20000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.3;stroke-opacity:1"
+     d="M 482.58298,472.74208 1106.7488,1143.2985"
+     id="path275-3-1" />
+</svg>

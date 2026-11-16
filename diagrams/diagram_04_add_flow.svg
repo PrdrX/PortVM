@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1280"
+   height="798"
+   viewBox="0 0 1280 798"
+   role="img"
+   aria-labelledby="title description"
+   version="1.1"
+   id="svg89"
+   sodipodi:docname="diagram_04_add_flow.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview89"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.63032581"
+     inkscape:cx="670.28827"
+     inkscape:cy="405.34592"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg89" />
+  <title
+     id="title">ADD flow across CPU, RWTrace, and ALU</title>
+  <desc
+     id="description">One ALU row constrains an ADD relation, the CPU executes it, and three successive RWTrace rows record two stack reads and one result write.</desc>
+  <defs
+     id="defs1">
+    <filter
+       id="table-shadow"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feDropShadow
+         dx="0"
+         dy="8"
+         stdDeviation="12"
+         flood-color="#000000"
+         flood-opacity="0.35" />
+    </filter>
+    <style
+       id="style1">
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #f1f3f5; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #e6e9ed; }
+      .muted { fill: #7f8793; }
+      .active { font: 700 14px &quot;SFMono-Regular&quot;, Consolas, &quot;Liberation Mono&quot;, monospace; fill: #ffffff; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+    </style>
+  </defs>
+  <rect
+     width="1280"
+     height="798"
+     fill="#101116"
+     id="rect1" />
+  <!-- CPU -->
+  <g
+     transform="translate(0 194)"
+     id="g37">
+    <text
+       x="64"
+       y="52"
+       class="title"
+       id="text1">CPU</text>
+    <g
+       filter="url(#table-shadow)"
+       id="g2">
+      <rect
+         x="64"
+         y="72"
+         width="1152"
+         height="174"
+         rx="8"
+         class="body"
+         id="rect2" />
+    </g>
+    <path
+       d="M72 72 H1208 Q1216 72 1216 80 V126 H64 V80 Q64 72 72 72 Z"
+       class="head"
+       id="path2" />
+    <g
+       class="grid"
+       id="g11">
+      <line
+         x1="64"
+         y1="126"
+         x2="1216"
+         y2="126"
+         id="line2" />
+      <line
+         x1="64"
+         y1="186"
+         x2="1216"
+         y2="186"
+         id="line3" />
+      <line
+         x1="134"
+         y1="72"
+         x2="134"
+         y2="246"
+         id="line4" />
+      <line
+         x1="244"
+         y1="72"
+         x2="244"
+         y2="246"
+         id="line5" />
+      <line
+         x1="394"
+         y1="72"
+         x2="394"
+         y2="246"
+         id="line6" />
+      <line
+         x1="474"
+         y1="72"
+         x2="474"
+         y2="246"
+         id="line7" />
+      <line
+         x1="674"
+         y1="72"
+         x2="674"
+         y2="246"
+         id="line8" />
+      <line
+         x1="804"
+         y1="72"
+         x2="804"
+         y2="246"
+         id="line9" />
+      <line
+         x1="934"
+         y1="72"
+         x2="934"
+         y2="246"
+         id="line10" />
+      <line
+         x1="1064"
+         y1="72"
+         x2="1064"
+         y2="246"
+         id="line11" />
+    </g>
+    <text
+       x="99"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text11">Row</text>
+    <text
+       x="189"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text12">Call ID</text>
+    <text
+       x="319"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text13">RW counter</text>
+    <text
+       x="434"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text14">SP</text>
+    <text
+       x="574"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text15">Opcode</text>
+    <text
+       x="739"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text16">rlc_a</text>
+    <text
+       x="869"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text17">rlc_b</text>
+    <text
+       x="999"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text18">rlc_c</text>
+    <text
+       x="1140"
+       y="106"
+       class="header"
+       text-anchor="middle"
+       id="text19">isadd</text>
+    <text
+       x="99"
+       y="162"
+       class="cell"
+       text-anchor="middle"
+       id="text20">4</text>
+    <text
+       x="189"
+       y="162"
+       class="cell"
+       text-anchor="middle"
+       id="text21">1</text>
+    <text
+       x="319"
+       y="162"
+       class="cell"
+       text-anchor="middle"
+       id="text22">15</text>
+    <text
+       x="434"
+       y="162"
+       class="cell"
+       text-anchor="middle"
+       id="text23">4</text>
+    <text
+       x="574"
+       y="162"
+       class="mono"
+       text-anchor="middle"
+       id="text24">0x01 (ADD)</text>
+    <text
+       x="739"
+       y="162"
+       class="mono"
+       text-anchor="middle"
+       id="text25">9</text>
+    <text
+       x="869"
+       y="162"
+       class="mono"
+       text-anchor="middle"
+       id="text26">4</text>
+    <text
+       x="999"
+       y="162"
+       class="mono"
+       text-anchor="middle"
+       id="text27">13</text>
+    <text
+       x="1140"
+       y="162"
+       class="active"
+       text-anchor="middle"
+       id="text28">1</text>
+    <text
+       x="99"
+       y="222"
+       class="cell"
+       text-anchor="middle"
+       id="text29">5</text>
+    <text
+       x="189"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text30">...</text>
+    <text
+       x="319"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text31">...</text>
+    <text
+       x="434"
+       y="222"
+       class="cell"
+       text-anchor="middle"
+       id="text32">3</text>
+    <text
+       x="574"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text33">...</text>
+    <text
+       x="739"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text34">...</text>
+    <text
+       x="869"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text35">...</text>
+    <text
+       x="999"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text36">...</text>
+    <text
+       x="1140"
+       y="222"
+       class="mono muted"
+       text-anchor="middle"
+       id="text37">...</text>
+  </g>
+  <!-- RWTrace -->
+  <g
+     transform="translate(0 194)"
+     id="g78">
+    <text
+       x="64"
+       y="310"
+       class="title"
+       id="text38">RWTrace</text>
+    <g
+       filter="url(#table-shadow)"
+       id="g38">
+      <rect
+         x="64"
+         y="330"
+         width="1152"
+         height="234"
+         rx="8"
+         class="body"
+         id="rect38" />
+    </g>
+    <path
+       d="M72 330 H1208 Q1216 330 1216 338 V384 H64 V338 Q64 330 72 330 Z"
+       class="head"
+       id="path38" />
+    <g
+       class="grid"
+       id="g47">
+      <line
+         x1="64"
+         y1="384"
+         x2="1216"
+         y2="384"
+         id="line38" />
+      <line
+         x1="64"
+         y1="444"
+         x2="1216"
+         y2="444"
+         id="line39" />
+      <line
+         x1="64"
+         y1="504"
+         x2="1216"
+         y2="504"
+         id="line40" />
+      <line
+         x1="164"
+         y1="330"
+         x2="164"
+         y2="564"
+         id="line41" />
+      <line
+         x1="294"
+         y1="330"
+         x2="294"
+         y2="564"
+         id="line42" />
+      <line
+         x1="434"
+         y1="330"
+         x2="434"
+         y2="564"
+         id="line43" />
+      <line
+         x1="574"
+         y1="330"
+         x2="574"
+         y2="564"
+         id="line44" />
+      <line
+         x1="754"
+         y1="330"
+         x2="754"
+         y2="564"
+         id="line45" />
+      <line
+         x1="924"
+         y1="330"
+         x2="924"
+         y2="564"
+         id="line46" />
+      <line
+         x1="1054"
+         y1="330"
+         x2="1054"
+         y2="564"
+         id="line47" />
+    </g>
+    <text
+       x="114"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text47">Tag</text>
+    <text
+       x="229"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text48">Call ID</text>
+    <text
+       x="364"
+       y="355"
+       class="header"
+       text-anchor="middle"
+       id="text49"><tspan
+         x="364"
+         id="tspan48">Address</tspan><tspan
+         x="364"
+         dy="17"
+         id="tspan49">(Stack Pointer)</tspan></text>
+    <text
+       x="504"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text50">Field tag</text>
+    <text
+       x="664"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text51">Storage key</text>
+    <text
+       x="839"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text52">RW counter</text>
+    <text
+       x="989"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text53">iswrite</text>
+    <text
+       x="1135"
+       y="364"
+       class="header"
+       text-anchor="middle"
+       id="text54">Value</text>
+    <text
+       x="114"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text55">2</text>
+    <text
+       x="229"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text56">1</text>
+    <text
+       x="364"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text57">3</text>
+    <text
+       x="504"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text58">0</text>
+    <text
+       x="664"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text59">0</text>
+    <text
+       x="839"
+       y="420"
+       class="cell"
+       text-anchor="middle"
+       id="text60">15</text>
+    <text
+       x="989"
+       y="420"
+       class="mono muted"
+       text-anchor="middle"
+       id="text61">0</text>
+    <text
+       x="1135"
+       y="420"
+       class="mono"
+       text-anchor="middle"
+       id="text62">9</text>
+    <text
+       x="114"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text63">2</text>
+    <text
+       x="229"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text64">1</text>
+    <text
+       x="364"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text65">2</text>
+    <text
+       x="504"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text66">0</text>
+    <text
+       x="664"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text67">0</text>
+    <text
+       x="839"
+       y="480"
+       class="cell"
+       text-anchor="middle"
+       id="text68">16</text>
+    <text
+       x="989"
+       y="480"
+       class="mono muted"
+       text-anchor="middle"
+       id="text69">0</text>
+    <text
+       x="1135"
+       y="480"
+       class="mono"
+       text-anchor="middle"
+       id="text70">4</text>
+    <text
+       x="114"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text71">2</text>
+    <text
+       x="229"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text72">1</text>
+    <text
+       x="364"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text73">2</text>
+    <text
+       x="504"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text74">0</text>
+    <text
+       x="664"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text75">0</text>
+    <text
+       x="839"
+       y="540"
+       class="cell"
+       text-anchor="middle"
+       id="text76">17</text>
+    <text
+       x="989"
+       y="540"
+       class="active"
+       text-anchor="middle"
+       id="text77">1</text>
+    <text
+       x="1135"
+       y="540"
+       class="mono"
+       text-anchor="middle"
+       id="text78">13</text>
+  </g>
+  <!-- ALU -->
+  <g
+     transform="translate(0 -576)"
+     id="g89">
+    <text
+       x="250"
+       y="628"
+       class="title"
+       id="text79">ALU</text>
+    <g
+       filter="url(#table-shadow)"
+       id="g79">
+      <rect
+         x="250"
+         y="648"
+         width="780"
+         height="114"
+         rx="8"
+         class="body"
+         id="rect79" />
+    </g>
+    <path
+       d="M258 648 H1022 Q1030 648 1030 656 V702 H250 V656 Q250 648 258 648 Z"
+       class="head"
+       id="path79" />
+    <g
+       class="grid"
+       id="g82">
+      <line
+         x1="250"
+         y1="702"
+         x2="1030"
+         y2="702"
+         id="line79" />
+      <line
+         x1="445"
+         y1="648"
+         x2="445"
+         y2="762"
+         id="line80" />
+      <line
+         x1="640"
+         y1="648"
+         x2="640"
+         y2="762"
+         id="line81" />
+      <line
+         x1="835"
+         y1="648"
+         x2="835"
+         y2="762"
+         id="line82" />
+    </g>
+    <text
+       x="347.5"
+       y="682"
+       class="header"
+       text-anchor="middle"
+       id="text82">input_a</text>
+    <text
+       x="542.5"
+       y="682"
+       class="header"
+       text-anchor="middle"
+       id="text83">input_b</text>
+    <text
+       x="737.5"
+       y="682"
+       class="header"
+       text-anchor="middle"
+       id="text84">output_c</text>
+    <text
+       x="932.5"
+       y="682"
+       class="header"
+       text-anchor="middle"
+       id="text85">isadd</text>
+    <text
+       x="347.5"
+       y="738"
+       class="mono"
+       text-anchor="middle"
+       id="text86">9</text>
+    <text
+       x="542.5"
+       y="738"
+       class="mono"
+       text-anchor="middle"
+       id="text87">4</text>
+    <text
+       x="737.5"
+       y="738"
+       class="mono"
+       text-anchor="middle"
+       id="text88">13</text>
+    <text
+       x="932.5"
+       y="738"
+       class="active"
+       text-anchor="middle"
+       id="text89">1</text>
+  </g>
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#d1d314;stroke-width:2.9083;stroke-dasharray:none;stroke-opacity:1"
+     d="M 378.82237,162.06935 699.24794,345.63763"
+     id="path91" />
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#d1d314;stroke-width:2.4951;stroke-dasharray:none;stroke-opacity:1"
+     d="M 587.67496,168.3602 840.80697,339.39119"
+     id="path91-3" />
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#12e502;stroke-width:2.15355;stroke-dasharray:none;stroke-opacity:1"
+     d="M 794.87154,162.86655 968.57421,348.5389"
+     id="path91-1" />
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#d31414;stroke-width:3.41328;stroke-dasharray:none;stroke-opacity:1"
+     d="m 771.0248,364.01863 343.8295,235.63859"
+     id="path91-5" />
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#d31414;stroke-width:2.8861;stroke-dasharray:none;stroke-opacity:1"
+     d="M 889.34062,359.80439 1077.8737,667.04733"
+     id="path91-5-1" />
+  <path
+     style="fill:#00d324;fill-opacity:1;stroke:#ffffff;stroke-width:1.94684;stroke-dasharray:none;stroke-opacity:1"
+     d="m 1030.3638,365.97451 73.4451,358.87487"
+     id="path91-5-2" />
+</svg>

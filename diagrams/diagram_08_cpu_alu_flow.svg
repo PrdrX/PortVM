@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="740" viewBox="0 0 1600 740" role="img" aria-labelledby="title description">
+  <title id="title">CPU and ALU constraint flow</title>
+  <desc id="description">CPU RLC values connect to the first row of the ALU RLC columns. The ALU exposes four 64-bit limbs, constrains ADD, and returns the compact output through rlc_c.</desc>
+
+  <defs>
+    <filter id="table-shadow" x="-3%" y="-8%" width="106%" height="122%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#69717e"/>
+    </marker>
+    <style>
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f1f3f5; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #e6e9ed; }
+      .active { font: 700 14px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #ffffff; }
+      .flow-label { font: 600 11px Inter, ui-sans-serif, system-ui, sans-serif; fill: #8a929e; }
+      .muted { fill: #7f8793; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+      .arrow { stroke: #69717e; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="740" fill="#101116"/>
+
+  <!-- CPU row -->
+  <text x="40" y="48" class="title">CPU</text>
+  <g filter="url(#table-shadow)">
+    <rect x="40" y="68" width="1520" height="122" rx="8" class="body"/>
+  </g>
+  <path d="M48 68 H1552 Q1560 68 1560 76 V128 H40 V76 Q40 68 48 68 Z" class="head"/>
+  <g class="grid">
+    <line x1="40" y1="128" x2="1560" y2="128"/>
+    <line x1="100" y1="68" x2="100" y2="190"/>
+    <line x1="210" y1="68" x2="210" y2="190"/>
+    <line x1="340" y1="68" x2="340" y2="190"/>
+    <line x1="420" y1="68" x2="420" y2="190"/>
+    <line x1="610" y1="68" x2="610" y2="190"/>
+    <line x1="900" y1="68" x2="900" y2="190"/>
+    <line x1="1190" y1="68" x2="1190" y2="190"/>
+    <line x1="1480" y1="68" x2="1480" y2="190"/>
+  </g>
+
+  <text x="70" y="106" class="header" text-anchor="middle">Row</text>
+  <text x="155" y="106" class="header" text-anchor="middle">Call ID</text>
+  <text x="275" y="106" class="header" text-anchor="middle">RW counter</text>
+  <text x="380" y="106" class="header" text-anchor="middle">SP</text>
+  <text x="515" y="106" class="header" text-anchor="middle">Opcode</text>
+  <text x="755" y="106" class="header" text-anchor="middle">rlc_a</text>
+  <text x="1045" y="106" class="header" text-anchor="middle">rlc_b</text>
+  <text x="1335" y="106" class="header" text-anchor="middle">rlc_c</text>
+  <text x="1520" y="106" class="header" text-anchor="middle">isadd</text>
+
+  <text x="70" y="166" class="cell" text-anchor="middle">4</text>
+  <text x="155" y="166" class="cell" text-anchor="middle">1</text>
+  <text x="275" y="166" class="cell" text-anchor="middle">15</text>
+  <text x="380" y="166" class="cell" text-anchor="middle">4</text>
+  <text x="515" y="166" class="mono" text-anchor="middle">0x01 (ADD)</text>
+  <text x="755" y="166" class="mono" text-anchor="middle">RLC(A)</text>
+  <text x="1045" y="166" class="mono" text-anchor="middle">RLC(B)</text>
+  <text x="1335" y="166" class="mono" text-anchor="middle">RLC(C)</text>
+  <text x="1520" y="166" class="active" text-anchor="middle">1</text>
+
+  <!-- ALU table shape -->
+  <text x="40" y="376" class="title">ALU</text>
+  <g filter="url(#table-shadow)">
+    <rect x="40" y="400" width="1520" height="300" rx="8" class="body"/>
+  </g>
+  <path d="M48 400 H1552 Q1560 400 1560 408 V460 H40 V408 Q40 400 48 400 Z" class="head"/>
+  <g class="grid">
+    <line x1="40" y1="460" x2="1560" y2="460"/>
+    <line x1="40" y1="520" x2="1560" y2="520"/>
+    <line x1="40" y1="580" x2="1560" y2="580"/>
+    <line x1="40" y1="640" x2="1560" y2="640"/>
+
+    <line x1="100" y1="400" x2="100" y2="700"/>
+    <line x1="270" y1="400" x2="270" y2="700"/>
+    <line x1="440" y1="400" x2="440" y2="700"/>
+    <line x1="610" y1="400" x2="610" y2="700"/>
+    <line x1="900" y1="400" x2="900" y2="700"/>
+    <line x1="1190" y1="400" x2="1190" y2="700"/>
+    <line x1="1480" y1="400" x2="1480" y2="700"/>
+  </g>
+
+  <!-- Lookup / logical-flow arrows. Endpoints are the first ALU RLC row. -->
+  <path d="M755 190 V476" class="arrow"/>
+  <path d="M1045 190 V476" class="arrow"/>
+  <path d="M1335 476 V194" class="arrow"/>
+  <path d="M1520 190 V476" class="arrow"/>
+
+  <!-- ALU headers and rows, drawn above the arrows -->
+  <text x="70" y="438" class="header" text-anchor="middle">Row</text>
+  <text x="185" y="438" class="header" text-anchor="middle">input_a</text>
+  <text x="355" y="438" class="header" text-anchor="middle">input_b</text>
+  <text x="525" y="438" class="header" text-anchor="middle">output_c</text>
+  <text x="755" y="438" class="header" text-anchor="middle">rlc_a</text>
+  <text x="1045" y="438" class="header" text-anchor="middle">rlc_b</text>
+  <text x="1335" y="438" class="header" text-anchor="middle">rlc_c</text>
+  <text x="1520" y="438" class="header" text-anchor="middle">isadd</text>
+
+  <text x="70" y="496" class="cell" text-anchor="middle">1</text>
+  <text x="185" y="496" class="mono" text-anchor="middle">0011 (3)</text>
+  <text x="355" y="496" class="mono" text-anchor="middle">0001 (1)</text>
+  <text x="525" y="496" class="mono" text-anchor="middle">0100 (4)</text>
+  <text x="755" y="496" class="mono" text-anchor="middle">RLC(A)</text>
+  <text x="1045" y="496" class="mono" text-anchor="middle">RLC(B)</text>
+  <text x="1335" y="496" class="mono" text-anchor="middle">RLC(C)</text>
+  <text x="1520" y="496" class="active" text-anchor="middle">1</text>
+
+  <text x="70" y="556" class="cell" text-anchor="middle">2</text>
+  <text x="185" y="556" class="mono" text-anchor="middle">0010 (2)</text>
+  <text x="355" y="556" class="mono" text-anchor="middle">0011 (3)</text>
+  <text x="525" y="556" class="mono" text-anchor="middle">0101 (5)</text>
+  <text x="755" y="556" class="mono muted" text-anchor="middle">RLC_a[2]</text>
+  <text x="1045" y="556" class="mono muted" text-anchor="middle">RLC_b[2]</text>
+  <text x="1335" y="556" class="mono muted" text-anchor="middle">RLC_c[2]</text>
+  <text x="1520" y="556" class="active" text-anchor="middle">1</text>
+
+  <text x="70" y="616" class="cell" text-anchor="middle">3</text>
+  <text x="185" y="616" class="mono" text-anchor="middle">0001 (1)</text>
+  <text x="355" y="616" class="mono" text-anchor="middle">0010 (2)</text>
+  <text x="525" y="616" class="mono" text-anchor="middle">0011 (3)</text>
+  <text x="755" y="616" class="mono muted" text-anchor="middle">RLC_a[3]</text>
+  <text x="1045" y="616" class="mono muted" text-anchor="middle">RLC_b[3]</text>
+  <text x="1335" y="616" class="mono muted" text-anchor="middle">RLC_c[3]</text>
+  <text x="1520" y="616" class="active" text-anchor="middle">1</text>
+
+  <text x="70" y="676" class="cell" text-anchor="middle">4</text>
+  <text x="185" y="676" class="mono" text-anchor="middle">0100 (4)</text>
+  <text x="355" y="676" class="mono" text-anchor="middle">0001 (1)</text>
+  <text x="525" y="676" class="mono" text-anchor="middle">0101 (5)</text>
+  <text x="755" y="676" class="mono muted" text-anchor="middle">RLC_a[4]</text>
+  <text x="1045" y="676" class="mono muted" text-anchor="middle">RLC_b[4]</text>
+  <text x="1335" y="676" class="mono muted" text-anchor="middle">RLC_c[4]</text>
+  <text x="1520" y="676" class="active" text-anchor="middle">1</text>
+</svg>

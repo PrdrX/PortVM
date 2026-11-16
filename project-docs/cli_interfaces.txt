@@ -1,0 +1,488 @@
+PortVM CLI Interfaces
+=====================
+
+This file documents the currently registered Cargo binaries.
+
+Run commands from the project root:
+
+    cargo run --release --bin <binary> -- <arguments>
+
+After building, the equivalent direct executable is:
+
+    target/release/<binary> <arguments>
+
+Currently available binaries:
+
+    vk_harness
+    pk_harness
+    witness_gen
+    mockprover
+    prove
+    verify
+
+
+1. vk_harness
+-------------
+
+Purpose:
+
+    Generate a verifying key from existing KZG parameters, or generate local
+    parameters and a verifying key together.
+
+All VK commands require:
+
+    --k <k>
+    --out <vk.bin>
+
+The current project normally uses:
+
+    --k 17
+
+Interface A: use existing parameters
+
+    cargo run --release --bin vk_harness -- \
+      --k 17 \
+      --params params.bin \
+      --out vk.bin
+
+Inputs:
+
+    params.bin
+
+Output:
+
+    vk.bin
+
+Interface B: unsafe local setup
+
+    cargo run --release --bin vk_harness -- \
+      --k 17 \
+      --unsafe-local-setup \
+      --params-out params.bin \
+      --out vk.bin
+
+Outputs:
+
+    params.bin
+    vk.bin
+
+Important:
+
+    --params and --unsafe-local-setup are mutually exclusive.
+    --params-out is valid only with --unsafe-local-setup.
+    Local setup is for development only and is not a trusted ceremony.
+
+Help:
+
+    cargo run --release --bin vk_harness -- --help
+
+
+2. pk_harness
+-------------
+
+Purpose:
+
+    Generate a proving key from KZG parameters and a verifying key.
+
+Interface:
+
+    cargo run --release --bin pk_harness -- \
+      --k 17 \
+      --params params.bin \
+      --vk vk.bin \
+      --out pk.bin
+
+Inputs:
+
+    params.bin
+    vk.bin
+
+Output:
+
+    pk.bin
+
+Important:
+
+    params.bin and vk.bin must belong to the same setup and circuit.
+    The k value in the files must match --k.
+
+Help:
+
+    cargo run --release --bin pk_harness -- --help
+
+
+3. witness_gen
+--------------
+
+Purpose:
+
+    Parse compact public ByteTable/TXTable input, execute the supported VM
+    surface, generate the complete witness, and serialize it.
+
+Interface:
+
+    cargo run --release --bin witness_gen -- \
+      --input input.txt \
+      --out witness.bin
+
+Input:
+
+    input.txt
+
+The compact input format contains:
+
+    [Byte_Table]
+    ...
+
+    [TX_Table]
+    ...
+
+Output:
+
+    witness.bin
+
+The witness file contains:
+
+    CPU rows
+    RWTrace rows
+    RWState rows
+    ALU rows
+    CopyTool rows
+    ByteTable rows
+    TX rows
+    public output rows
+    all 23 public instance columns
+
+The witness file is a PortVM-specific versioned binary format.
+
+Help:
+
+    cargo run --release --bin witness_gen -- --help
+
+
+4. mockprover
+-------------
+
+Purpose:
+
+    Run Halo2 MockProver against a witness. This is a debug/checking path and
+    does not create a real proof.
+
+The mock prover always requires:
+
+    --k <k>
+
+Interface A: generate the witness from compact input, then check it
+
+    cargo run --release --bin mockprover -- \
+      --k 17 \
+      --input input.txt
+
+Input:
+
+    input.txt
+
+Interface B: load an existing full witness generated from witness_gen, then check it
+
+    cargo run --release --bin mockprover -- \
+      --k 17 \
+      --witness witness.bin
+
+Input:
+
+    witness.bin
+
+Important:
+
+    --input and --witness are mutually exclusive.
+    Exactly one of them is required.
+    No params.bin, vk.bin, or pk.bin is needed.
+    No proof is created.
+
+Help:
+
+    cargo run --release --bin mockprover -- --help
+
+
+5. prove
+--------
+
+Purpose:
+
+    Generate a real Halo2 proof from either compact public input or an existing
+    full witness.
+
+The proof path uses:
+
+    BN256 KZG
+    SHPLONK multi-opening
+    Blake2b transcript
+    Challenge255
+    OsRng proof randomness
+
+The prover always requires:
+
+    --k <k>
+    --proof-out <proof.bin>
+    --instances-out <instances.bin>
+
+The current project normally uses:
+
+    --k 17
+
+There are three conceptual prover modes and four concrete command forms.
+
+Mode 1: existing keys plus compact input
+
+    cargo run --release --bin prove -- \
+      --k 17 \
+      --params params.bin \
+      --pk pk.bin \
+      --input input.txt \
+      --witness-out witness.bin \
+      --proof-out proof.bin \
+      --instances-out instances.bin
+
+Processing:
+
+    input.txt
+      -> execution core
+      -> complete witness
+      -> proof
+
+Outputs:
+
+    witness.bin
+    proof.bin
+    instances.bin
+
+Mode 2: existing keys plus a full witness
+
+    cargo run --release --bin prove -- \
+      --k 17 \
+      --params params.bin \
+      --pk pk.bin \
+      --witness witness.bin \
+      --proof-out proof.bin \
+      --instances-out instances.bin
+
+Processing:
+
+    witness.bin
+      -> proof
+
+Outputs:
+
+    proof.bin
+    instances.bin
+
+Mode 3A: local setup plus compact input
+
+    cargo run --release --bin prove -- \
+      --k 17 \
+      --input input.txt \
+      --witness-out witness.bin \
+      --params-out params.bin \
+      --vk-out vk.bin \
+      --pk-out pk.bin \
+      --proof-out proof.bin \
+      --instances-out instances.bin
+
+Processing:
+
+    input.txt
+      -> execution core
+      -> complete witness
+      -> local params
+      -> VK
+      -> PK
+      -> proof
+
+Outputs:
+
+    witness.bin
+    params.bin
+    vk.bin
+    pk.bin
+    proof.bin
+    instances.bin
+
+Mode 3B: local setup plus a full witness
+
+    cargo run --release --bin prove -- \
+      --k 17 \
+      --witness witness.bin \
+      --params-out params.bin \
+      --vk-out vk.bin \
+      --pk-out pk.bin \
+      --proof-out proof.bin \
+      --instances-out instances.bin
+
+Processing:
+
+    witness.bin
+      -> local params
+      -> VK
+      -> PK
+      -> proof
+
+Outputs:
+
+    params.bin
+    vk.bin
+    pk.bin
+    proof.bin
+    instances.bin
+
+Optional flag for all four prove forms:
+
+    --mock-precheck
+
+Example:
+
+    cargo run --release --bin prove -- \
+      --k 17 \
+      --params params.bin \
+      --pk pk.bin \
+      --witness witness.bin \
+      --proof-out proof.bin \
+      --instances-out instances.bin \
+      --mock-precheck
+
+With this flag, MockProver checks the witness before the expensive real proof
+generation. Without this flag, the prover goes directly to real proving.
+
+Witness-source rules:
+
+    --input and --witness are mutually exclusive.
+    Exactly one witness source is required.
+    --input requires --witness-out.
+    --witness rejects --witness-out.
+
+Key rules:
+
+    Existing-key mode requires both:
+
+        --params params.bin
+        --pk pk.bin
+
+    Local-setup mode provides neither --params nor --pk and requires all three:
+
+        --params-out params.bin
+        --vk-out vk.bin
+        --pk-out pk.bin
+
+    Do not mix --params/--pk with --params-out/--vk-out/--pk-out.
+
+Public instances:
+
+    instances.bin is generated automatically from the witness.
+    It contains the 23 public instance columns required by the circuit.
+    The full witness is not needed by a verifier.
+
+Important:
+
+    params.bin and pk.bin must come from the same KZG setup and circuit version.
+    The current CLI checks their k values, but cannot prove that unrelated files
+    came from the same ceremony or circuit revision.
+    Local setup is unsafe development setup, not a trusted ceremony.
+    Actual proof generation is hardware-heavy.
+
+Help:
+
+    cargo run --release --bin prove -- --help
+
+
+6. verify
+---------
+
+Purpose:
+
+    Verify a real Halo2 proof using only the KZG parameters, verifying key,
+    proof transcript, and public instances.
+
+Interface:
+
+    cargo run --release --bin verify -- \
+      --k 17 \
+      --params params.bin \
+      --vk vk.bin \
+      --proof proof.bin \
+      --instances instances.bin
+
+Inputs:
+
+    vk.bin
+    params.bin
+    proof.bin
+    instances.bin
+
+The current project normally uses:
+
+    --k 17
+
+The verifier checks that:
+
+    params.bin has the requested k
+    vk.bin has the requested k
+    instances.bin has the supported 23 public instance columns
+    proof.bin is non-empty
+    the proof verifies under BN256 KZG SHPLONK
+
+The verifier does not need:
+
+    witness.bin
+    input.txt
+    pk.bin
+
+The public-instance file is the versioned `PORTINS1` format emitted by
+`prove`. It must contain exactly the public instances used for that proof.
+
+Cryptographic configuration:
+
+    BN256 KZG
+    SHPLONK multi-opening
+    Blake2b transcript
+    Challenge255
+
+Output on success:
+
+    Proof verified (k=17, proof=<bytes> bytes, instances=<bytes> bytes)
+
+The command exits with a failure status and an error message if loading,
+format validation, k validation, or cryptographic verification fails.
+
+Help:
+
+    cargo run --release --bin verify -- --help
+
+
+7. Common artifact flow
+-----------------------
+
+Development setup:
+
+    params.bin
+      -> vk_harness
+      -> vk.bin
+      -> pk_harness
+      -> pk.bin
+
+Witness and proof flow with existing keys:
+
+    input.txt
+      -> witness_gen
+      -> witness.bin
+      -> prove
+      -> proof.bin + instances.bin
+
+Or directly:
+
+    input.txt
+      -> prove
+      -> witness.bin + proof.bin + instances.bin
+
+Verification flow:
+
+    vk.bin + params.bin + proof.bin + instances.bin
+      -> verify

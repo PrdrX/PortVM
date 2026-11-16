@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1352" height="606" viewBox="44 74 1352 606" role="img" aria-labelledby="title description">
+  <title id="title">TxTable example</title>
+  <desc id="description">TxTable rows sorted by tag, showing five indexed calldata bytes, omitted unimportant tags, and calldata length.</desc>
+
+  <defs>
+    <filter id="table-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 30px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f1f3f5; }
+      .header { font: 650 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #e6e9ed; }
+      .muted { fill: #7f8793; }
+      .note-title { font: 700 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f1f3f5; }
+      .note { font: 400 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #aab1bc; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="680" fill="#101116"/>
+
+  <g filter="url(#table-shadow)">
+    <rect x="64" y="94" width="1312" height="498" rx="8" fill="#191b22"/>
+  </g>
+
+  <path d="M72 94 H1368 Q1376 94 1376 102 V158 H64 V102 Q64 94 72 94 Z" fill="#292c36"/>
+
+  <g stroke="#343842" stroke-width="1">
+    <line x1="64" y1="158" x2="1376" y2="158"/>
+    <line x1="64" y1="220" x2="1376" y2="220"/>
+    <line x1="64" y1="282" x2="1376" y2="282"/>
+    <line x1="64" y1="344" x2="1376" y2="344"/>
+    <line x1="64" y1="406" x2="1376" y2="406"/>
+    <line x1="64" y1="468" x2="1376" y2="468"/>
+    <line x1="64" y1="530" x2="1376" y2="530"/>
+    <line x1="144" y1="94" x2="144" y2="592"/>
+    <line x1="424" y1="94" x2="424" y2="592"/>
+    <line x1="564" y1="94" x2="564" y2="592"/>
+    <line x1="970" y1="94" x2="970" y2="592"/>
+  </g>
+
+  <text x="104" y="131" class="header" text-anchor="middle">Row</text>
+  <text x="284" y="131" class="header" text-anchor="middle">Tag</text>
+  <text x="494" y="131" class="header" text-anchor="middle">Index</text>
+  <text x="767" y="122" class="header" text-anchor="middle">value_low</text>
+  <text x="767" y="142" class="header" text-anchor="middle" opacity="0.6">bits 0-127</text>
+  <text x="1173" y="122" class="header" text-anchor="middle">value_high</text>
+  <text x="1173" y="142" class="header" text-anchor="middle" opacity="0.6">bits 128-255</text>
+
+  <text x="104" y="196" class="cell" text-anchor="middle">0</text>
+  <text x="284" y="196" class="mono" text-anchor="middle">1 (CALLDATA_BYTE)</text>
+  <text x="494" y="196" class="cell" text-anchor="middle">0</text>
+  <text x="767" y="196" class="mono" text-anchor="middle">01001000</text>
+  <text x="1173" y="196" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="104" y="258" class="cell" text-anchor="middle">1</text>
+  <text x="284" y="258" class="mono" text-anchor="middle">1 (CALLDATA_BYTE)</text>
+  <text x="494" y="258" class="cell" text-anchor="middle">1</text>
+  <text x="767" y="258" class="mono" text-anchor="middle">01100101</text>
+  <text x="1173" y="258" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="104" y="320" class="cell" text-anchor="middle">2</text>
+  <text x="284" y="320" class="mono" text-anchor="middle">1 (CALLDATA_BYTE)</text>
+  <text x="494" y="320" class="cell" text-anchor="middle">2</text>
+  <text x="767" y="320" class="mono" text-anchor="middle">01101100</text>
+  <text x="1173" y="320" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="104" y="382" class="cell" text-anchor="middle">3</text>
+  <text x="284" y="382" class="mono" text-anchor="middle">1 (CALLDATA_BYTE)</text>
+  <text x="494" y="382" class="cell" text-anchor="middle">3</text>
+  <text x="767" y="382" class="mono" text-anchor="middle">01101100</text>
+  <text x="1173" y="382" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="104" y="444" class="cell" text-anchor="middle">4</text>
+  <text x="284" y="444" class="mono" text-anchor="middle">1 (CALLDATA_BYTE)</text>
+  <text x="494" y="444" class="cell" text-anchor="middle">4</text>
+  <text x="767" y="444" class="mono" text-anchor="middle">01101111</text>
+  <text x="1173" y="444" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="104" y="506" class="cell muted" text-anchor="middle">5</text>
+  <text x="284" y="506" class="mono muted" text-anchor="middle">... (unimportant)</text>
+  <text x="494" y="506" class="mono muted" text-anchor="middle">...</text>
+  <text x="767" y="506" class="mono muted" text-anchor="middle">...</text>
+  <text x="1173" y="506" class="mono muted" text-anchor="middle">...</text>
+
+  <text x="104" y="568" class="cell" text-anchor="middle">6</text>
+  <text x="284" y="568" class="mono" text-anchor="middle">8 (ROOT_CALLDATACOPY_LENGTH)</text>
+  <text x="494" y="568" class="cell" text-anchor="middle">0</text>
+  <text x="767" y="568" class="mono" text-anchor="middle">101</text>
+  <text x="1173" y="568" class="mono muted" text-anchor="middle">0</text>
+
+  <text x="64" y="632" class="note-title">Indexed calldata</text>
+  <text x="64" y="655" class="note">Tag 1 stores five bytes at indexes 0 through 4. Tag 8 declares their total length.</text>
+</svg>

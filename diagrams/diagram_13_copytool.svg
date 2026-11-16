@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="464" viewBox="0 0 1400 464" role="img" aria-labelledby="title description">
+  <title id="title">CopyTool memory-to-memory copy</title>
+  <desc id="description">CopyTool copies three bytes from memory addresses three through five of call five into memory addresses ten through twelve of call ten. Every byte uses an alternating read and write row.</desc>
+
+  <defs>
+    <filter id="table-shadow" x="-3%" y="-8%" width="106%" height="122%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #f1f3f5; }
+      .subtitle { font: 500 12px Inter, ui-sans-serif, system-ui, sans-serif; fill: #858e9a; }
+      .header { font: 650 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .cell { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e6e9ed; }
+      .mono { font: 500 13px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #e6e9ed; }
+      .muted { fill: #7f8793; }
+      .active { font: 700 14px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #ffffff; }
+      .grid { stroke: #343842; stroke-width: 1; }
+      .body { fill: #191b22; }
+      .head { fill: #292c36; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="464" fill="#101116"/>
+
+  <text x="40" y="42" class="title">CopyTool</text>
+  <g filter="url(#table-shadow)">
+    <rect x="40" y="64" width="1320" height="352" rx="8" class="body"/>
+  </g>
+  <path d="M48 64 H1352 Q1360 64 1360 72 V128 H40 V72 Q40 64 48 64 Z" class="head"/>
+
+  <g class="grid">
+    <line x1="40" y1="128" x2="1360" y2="128"/>
+    <line x1="40" y1="176" x2="1360" y2="176"/>
+    <line x1="40" y1="224" x2="1360" y2="224"/>
+    <line x1="40" y1="272" x2="1360" y2="272"/>
+    <line x1="40" y1="320" x2="1360" y2="320"/>
+    <line x1="40" y1="368" x2="1360" y2="368"/>
+
+    <line x1="120" y1="64" x2="120" y2="416"/>
+    <line x1="270" y1="64" x2="270" y2="416"/>
+    <line x1="420" y1="64" x2="420" y2="416"/>
+    <line x1="570" y1="64" x2="570" y2="416"/>
+    <line x1="720" y1="64" x2="720" y2="416"/>
+    <line x1="870" y1="64" x2="870" y2="416"/>
+    <line x1="1020" y1="64" x2="1020" y2="416"/>
+    <line x1="1170" y1="64" x2="1170" y2="416"/>
+    <line x1="1270" y1="64" x2="1270" y2="416"/>
+  </g>
+
+  <text x="80" y="104" class="header" text-anchor="middle">Row</text>
+  <text x="195" y="104" class="header" text-anchor="middle">iswrite</text>
+  <text x="345" y="95" class="header" text-anchor="middle"><tspan x="345">Read</tspan><tspan x="345" dy="17">call ID</tspan></text>
+  <text x="495" y="95" class="header" text-anchor="middle"><tspan x="495">Read</tspan><tspan x="495" dy="17">address</tspan></text>
+  <text x="645" y="95" class="header" text-anchor="middle"><tspan x="645">Address</tspan><tspan x="645" dy="17">end</tspan></text>
+  <text x="795" y="95" class="header" text-anchor="middle"><tspan x="795">Write</tspan><tspan x="795" dy="17">call ID</tspan></text>
+  <text x="945" y="95" class="header" text-anchor="middle"><tspan x="945">Write</tspan><tspan x="945" dy="17">address</tspan></text>
+  <text x="1095" y="95" class="header" text-anchor="middle"><tspan x="1095">RW</tspan><tspan x="1095" dy="17">counter</tspan></text>
+  <text x="1220" y="95" class="header" text-anchor="middle"><tspan x="1220">Bytes</tspan><tspan x="1220" dy="17">left</tspan></text>
+  <text x="1315" y="104" class="header" text-anchor="middle">Value</text>
+
+  <text x="80" y="158" class="cell" text-anchor="middle">0</text>
+  <text x="195" y="158" class="mono" text-anchor="middle">0 (read)</text>
+  <text x="345" y="158" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="158" class="cell" text-anchor="middle">3</text>
+  <text x="645" y="158" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="158" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="158" class="cell" text-anchor="middle">10</text>
+  <text x="1095" y="158" class="mono" text-anchor="middle">20</text>
+  <text x="1220" y="158" class="cell" text-anchor="middle">3</text>
+  <text x="1315" y="158" class="mono" text-anchor="middle">17</text>
+
+  <text x="80" y="206" class="cell" text-anchor="middle">1</text>
+  <text x="195" y="206" class="mono" text-anchor="middle">1 (write)</text>
+  <text x="345" y="206" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="206" class="cell" text-anchor="middle">3</text>
+  <text x="645" y="206" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="206" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="206" class="cell" text-anchor="middle">10</text>
+  <text x="1095" y="206" class="mono" text-anchor="middle">21</text>
+  <text x="1220" y="206" class="cell" text-anchor="middle">3</text>
+  <text x="1315" y="206" class="mono" text-anchor="middle">17</text>
+
+  <text x="80" y="254" class="cell" text-anchor="middle">2</text>
+  <text x="195" y="254" class="mono" text-anchor="middle">0 (read)</text>
+  <text x="345" y="254" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="254" class="cell" text-anchor="middle">4</text>
+  <text x="645" y="254" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="254" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="254" class="cell" text-anchor="middle">11</text>
+  <text x="1095" y="254" class="mono" text-anchor="middle">22</text>
+  <text x="1220" y="254" class="cell" text-anchor="middle">2</text>
+  <text x="1315" y="254" class="mono" text-anchor="middle">42</text>
+
+  <text x="80" y="302" class="cell" text-anchor="middle">3</text>
+  <text x="195" y="302" class="mono" text-anchor="middle">1 (write)</text>
+  <text x="345" y="302" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="302" class="cell" text-anchor="middle">4</text>
+  <text x="645" y="302" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="302" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="302" class="cell" text-anchor="middle">11</text>
+  <text x="1095" y="302" class="mono" text-anchor="middle">23</text>
+  <text x="1220" y="302" class="cell" text-anchor="middle">2</text>
+  <text x="1315" y="302" class="mono" text-anchor="middle">42</text>
+
+  <text x="80" y="350" class="cell" text-anchor="middle">4</text>
+  <text x="195" y="350" class="mono" text-anchor="middle">0 (read)</text>
+  <text x="345" y="350" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="350" class="cell" text-anchor="middle">5</text>
+  <text x="645" y="350" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="350" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="350" class="cell" text-anchor="middle">12</text>
+  <text x="1095" y="350" class="mono" text-anchor="middle">24</text>
+  <text x="1220" y="350" class="cell" text-anchor="middle">1</text>
+  <text x="1315" y="350" class="mono" text-anchor="middle">99</text>
+
+  <text x="80" y="398" class="cell" text-anchor="middle">5</text>
+  <text x="195" y="398" class="mono" text-anchor="middle">1 (write)</text>
+  <text x="345" y="398" class="cell" text-anchor="middle">5</text>
+  <text x="495" y="398" class="cell" text-anchor="middle">5</text>
+  <text x="645" y="398" class="cell" text-anchor="middle">6</text>
+  <text x="795" y="398" class="cell" text-anchor="middle">10</text>
+  <text x="945" y="398" class="cell" text-anchor="middle">12</text>
+  <text x="1095" y="398" class="mono" text-anchor="middle">25</text>
+  <text x="1220" y="398" class="cell" text-anchor="middle">1</text>
+  <text x="1315" y="398" class="mono" text-anchor="middle">99</text>
+</svg>

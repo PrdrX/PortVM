@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="275" viewBox="0 40 1500 275" role="img" aria-labelledby="title description">
+  <title id="title">ALU value decomposition and RLC flow</title>
+  <desc id="description">Numbers A, B, and C become four 64-bit binary limbs, corresponding limbs are added, and each four-limb value is combined with the RLC challenge r.</desc>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#69717e"/>
+    </marker>
+    <style>
+      .heading { font: 700 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #9ba3af; letter-spacing: 0.08em; }
+      .label { font: 700 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .formula { font: 500 14px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #f1f3f5; }
+      .bits { font: 500 11px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #e6e9ed; }
+      .index { font: 600 10px Inter, ui-sans-serif, system-ui, sans-serif; fill: #858e9a; }
+      .note { font: 500 11px Inter, ui-sans-serif, system-ui, sans-serif; fill: #858e9a; }
+      .small-note { font: 500 9px Inter, ui-sans-serif, system-ui, sans-serif; fill: #858e9a; }
+      .field-note { font: 500 8.5px "SFMono-Regular", Consolas, "Liberation Mono", monospace; fill: #858e9a; }
+      .arrow { stroke: #69717e; stroke-width: 1.7; fill: none; marker-end: url(#arrowhead); }
+      .sum-line { stroke: #59606c; stroke-width: 1.4; }
+    </style>
+  </defs>
+
+  <rect width="1500" height="315" fill="#101116"/>
+
+  <!-- 1. Numbers -->
+  <text x="165" y="111" class="formula" text-anchor="middle">A ∈ [0, 2²⁵⁶)</text>
+  <text x="165" y="191" class="formula" text-anchor="middle">B ∈ [0, 2²⁵⁶)</text>
+  <text x="165" y="271" class="formula" text-anchor="middle">C = A + B, C ∈ [0, 2²⁵⁶)</text>
+
+  <path d="M244 185 H276" class="arrow"/>
+
+  <!-- 2. Four compact binary limbs -->
+  <text x="296" y="105" class="label">A</text>
+  <text x="365" y="103" class="bits" text-anchor="middle">[01001101…]₆₄</text>
+  <text x="470" y="103" class="bits" text-anchor="middle">[10110010…]₆₄</text>
+  <text x="575" y="103" class="bits" text-anchor="middle">[00101101…]₆₄</text>
+  <text x="680" y="103" class="bits" text-anchor="middle">[11100001…]₆₄</text>
+  <text x="365" y="121" class="index" text-anchor="middle">a₄</text>
+  <text x="470" y="121" class="index" text-anchor="middle">a₃</text>
+  <text x="575" y="121" class="index" text-anchor="middle">a₂</text>
+  <text x="680" y="121" class="index" text-anchor="middle">a₁</text>
+
+  <text x="296" y="185" class="label">B</text>
+  <text x="365" y="183" class="bits" text-anchor="middle">[00110110…]₆₄</text>
+  <text x="470" y="183" class="bits" text-anchor="middle">[11001001…]₆₄</text>
+  <text x="575" y="183" class="bits" text-anchor="middle">[01110010…]₆₄</text>
+  <text x="680" y="183" class="bits" text-anchor="middle">[00011101…]₆₄</text>
+  <text x="365" y="201" class="index" text-anchor="middle">b₄</text>
+  <text x="470" y="201" class="index" text-anchor="middle">b₃</text>
+  <text x="575" y="201" class="index" text-anchor="middle">b₂</text>
+  <text x="680" y="201" class="index" text-anchor="middle">b₁</text>
+
+  <text x="296" y="265" class="label">C</text>
+  <text x="365" y="263" class="bits" text-anchor="middle">[10000100…]₆₄</text>
+  <text x="470" y="263" class="bits" text-anchor="middle">[01111011…]₆₄</text>
+  <text x="575" y="263" class="bits" text-anchor="middle">[10011111…]₆₄</text>
+  <text x="680" y="263" class="bits" text-anchor="middle">[11111110…]₆₄</text>
+  <text x="365" y="281" class="index" text-anchor="middle">c₄</text>
+  <text x="470" y="281" class="index" text-anchor="middle">c₃</text>
+  <text x="575" y="281" class="index" text-anchor="middle">c₂</text>
+  <text x="680" y="281" class="index" text-anchor="middle">c₁</text>
+
+  <path d="M766 185 H798" class="arrow"/>
+
+  <!-- 3. Limb addition -->
+  <text x="832" y="111" class="label">A</text>
+  <text x="867" y="111" class="formula">a₄ | a₃ | a₂ | a₁</text>
+  <text x="815" y="191" class="formula">+</text>
+  <text x="832" y="191" class="label">B</text>
+  <text x="867" y="191" class="formula">b₄ | b₃ | b₂ | b₁</text>
+  <line x1="867" y1="224" x2="1017" y2="224" class="sum-line"/>
+  <text x="832" y="271" class="label">C</text>
+  <text x="867" y="271" class="formula">c₄ | c₃ | c₂ | c₁</text>
+  <text x="942" y="299" class="small-note" text-anchor="middle">Chunk overflow is ignored for simplicity in this visual.</text>
+
+  <path d="M1060 185 H1092" class="arrow"/>
+
+  <!-- 4. RLC combination -->
+  <text x="1275" y="111" class="formula" text-anchor="middle">RLC(A) = a₁ + r·a₂ + r²·a₃ + r³·a₄</text>
+  <text x="1275" y="191" class="formula" text-anchor="middle">RLC(B) = b₁ + r·b₂ + r²·b₃ + r³·b₄</text>
+  <text x="1275" y="271" class="formula" text-anchor="middle">RLC(C) = c₁ + r·c₂ + r²·c₃ + r³·c₄</text>
+  <text x="1275" y="295" class="field-note" text-anchor="middle">r, RLC(A), RLC(B), RLC(C) ∈ [0, p)</text>
+  <text x="1275" y="309" class="field-note" text-anchor="middle">p = the 254-bit prime modulus of the BN254 scalar field</text>
+</svg>
