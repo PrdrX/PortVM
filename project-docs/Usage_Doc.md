@@ -1,3 +1,5 @@
+> AI Generated
+
 # PortVM AI-Agent Operating Guide
 
 This document is meant to be given directly to an AI coding agent that has no prior PortVM context. It explains how to prepare a valid program, generate and check a witness, create keys and proofs, verify a proof, and reason about the project without silently assuming ordinary EVM behavior.

@@ -14,8 +14,8 @@
   /.agents/
   /.codex/
   /.idea/
+  /artifacts/
 
-  # Documentation temporarily excluded
   /docs/
 
   # Generated cryptographic artifacts
